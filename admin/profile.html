@@ -102,24 +102,11 @@
               <i class="bi bi-list"></i>
             </a>
           </li>
-
-          <li class="nav-item d-none d-md-block">
-            <a href="./index.html" class="nav-link">
-              <i class="bi bi-grid-1x2 me-1" aria-hidden="true"></i>
-              Live preview
-            </a>
-          </li>
-          <li class="nav-item d-none d-md-block">
-            <a href="./docs/introduction.html" class="nav-link">
-              <i class="bi bi-book me-1" aria-hidden="true"></i>
-              Documentation
-            </a>
-          </li>
         </ul>
         <!--end::Start Navbar Links-->
 
         <!--begin::Navbar Search-->
-        <form class="navbar-search d-none d-xl-block ms-3" role="search" action="./pages/search-results.html">
+        <form class="navbar-search d-none d-xl-block ms-3" role="search" action="./search-results.html">
           <label for="navbar-search-input" class="visually-hidden">Search</label>
           <div class="navbar-search-field">
             <input type="search" id="navbar-search-input" name="q" class="form-control" placeholder="Search…"
@@ -158,7 +145,7 @@
                       Brad Diesel
                       <span class="float-end fs-7 text-danger"><i class="bi bi-star-fill"></i></span>
                     </p>
-                    <p class="fs-7">Call me whenever you can..</p>
+                    <p class="fs-7">Call me whenever you can...</p>
                     <p class="fs-7 text-secondary">
                       <i class="bi bi-clock-fill me-1"></i> 4 Hours Ago
                     </p>
@@ -211,7 +198,7 @@
                 <!--end::Message-->
               </a>
               <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
+              <a href="./chat.html" class="dropdown-item dropdown-footer">See All Messages</a>
             </div>
           </li>
           <!--end::Messages Dropdown Menu-->
@@ -337,13 +324,13 @@
                 <!--begin::Row-->
                 <div class="row">
                   <div class="col-4 text-center">
-                    <a href="#">Followers</a>
+                    <a href="./chat.html">Chat</a>
                   </div>
                   <div class="col-4 text-center">
-                    <a href="#">Sales</a>
+                    <a href="./calendar.html">Calendar</a>
                   </div>
                   <div class="col-4 text-center">
-                    <a href="#">Friends</a>
+                    <a href="./settings.html">Settings</a>
                   </div>
                 </div>
                 <!--end::Row-->
@@ -351,8 +338,8 @@
               <!--end::Menu Body-->
               <!--begin::Menu Footer-->
               <li class="user-footer">
-                <a href="#" class="btn btn-outline-secondary">Profile</a>
-                <a href="#" class="btn btn-outline-danger float-end">Sign out</a>
+                <a href="./profile.html" class="btn btn-outline-secondary">Profile</a>
+                <a href="./login.html" class="btn btn-outline-danger float-end">Sign out</a>
               </li>
               <!--end::Menu Footer-->
             </ul>
@@ -399,6 +386,10 @@
               <i class="nav-icon bi bi-speedometer"></i>
               <p>Dashboard</p>
             </a>
+            <a href="./statistics.html" class ="nav-link active">
+                <i class = "nav-icon bi bi-bar-chart-line-fill"></i>
+                    <p>Statistics</p>
+            </a>
             <a href="./customers.html" class="nav-link active">
               <i class="nav-icon bi bi-people"></i>
               <p>Customers</p>
@@ -406,6 +397,26 @@
             <a href="./products.html" class="nav-link active">
               <i class="nav-icon bi bi-box-seam"></i>
               <p>Products</p>
+            </a>
+            <a href="./file-manager.html" class="nav-link active">
+              <i class="nav-icon bi bi-folder"></i>
+              <p>File manager</p>
+            </a>
+            <a href="./calendar.html" class="nav-link active">
+              <i class="nav-icon bi bi-calendar-event"></i>
+              <p>Calendar</p>
+            </a>
+            <a href="./invoice.html" class="nav-link active">
+              <i class="nav-icon bi bi-receipt"></i>
+              <p>Invoice</p>
+            </a>
+            <a href="./orders.html" class="nav-link active">
+              <i class="nav-icon bi bi-truck"></i>
+              <p>Orders</p>
+            </a>
+            <a href="./projects.html" class="nav-link active">
+              <i class="nav-icon bi bi-kanban"></i>
+              <p>Projects</p>
             </a>
           </ul>
           <!--end::Sidebar Menu-->
