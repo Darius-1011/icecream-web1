@@ -941,7 +941,7 @@ img {
 
 .shop-toolbar select {
   font-size: .82rem;
-  max-width: 190px;
+  max-width: 15rem;
 }
 
 .pagination .page-link {
