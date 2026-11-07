@@ -12,8 +12,6 @@
       'use strict';
       const root = document.documentElement;
 
-      // Applications with their own theming opt out of AdminLTE's color mode
-      // entirely, here as well as in the bundle.
       if (root.getAttribute('data-lte-color-mode') === 'off') {
         return;
       }
@@ -23,10 +21,8 @@
       try {
         stored = localStorage.getItem(STORAGE_KEY);
       } catch {
-        // localStorage may be unavailable (private mode, sandboxed iframe).
+        // localStorage may be unavailable
       }
-      // Mirror the precedence in color-mode.ts: the visitor's stored choice
-      // wins, then a theme this page declared itself, then the OS preference.
       const authored = root.getAttribute('data-bs-theme');
       let resolved = 'light';
       if (stored === 'dark' || stored === 'light') {
@@ -38,8 +34,6 @@
       }
       root.setAttribute('data-bs-theme', resolved);
       root.style.colorScheme = resolved;
-      // Flag values computed here, so the bundle does not mistake them for a
-      // theme the page declared and stop following the OS preference.
       if (resolved !== authored) {
         root.setAttribute('data-lte-theme-resolved', '');
       }
@@ -77,7 +71,7 @@
 
 <!--begin::Body-->
 
-<body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
+<body class="layout-fixed sidebar-expand-lg bg-body-tertiary text-body">
   <!--begin::App Wrapper-->
   <div class="app-wrapper">
     <!--begin::Header-->
@@ -109,13 +103,14 @@
 
         <!--begin::End Navbar Links-->
         <ul class="navbar-nav ms-auto">
-          <!--begin::Search (small screens: the field above is hidden, so link to the search page)-->
+          <!--begin::Search (small screens)-->
           <li class="nav-item d-xl-none">
             <a class="nav-link" href="./pages/search-results.html" aria-label="Search">
               <i class="bi bi-search" aria-hidden="true"></i>
             </a>
           </li>
           <!--end::Search-->
+
           <!--begin::Messages Dropdown Menu-->
           <li class="nav-item dropdown">
             <a class="nav-link" data-bs-toggle="dropdown" href="#" aria-label="Messages: 3 unread">
@@ -222,8 +217,6 @@
           <!--end::Notifications Dropdown Menu-->
 
           <!--begin::Language Menu-->
-          <!-- Markup only: swapping the locale is the application's job. The docs
-           Recipes page shows how to wire this to a real locale switch. -->
           <li class="nav-item dropdown">
             <a class="nav-link" href="#" id="language-menu" data-bs-toggle="dropdown" aria-expanded="false"
               aria-label="Change language, current language English">
@@ -310,7 +303,6 @@
               <!--end::User Image-->
               <!--begin::Menu Body-->
               <li class="user-body">
-                <!--begin::Row-->
                 <div class="row">
                   <div class="col-4 text-center">
                     <a href="./chat.html">Chat</a>
@@ -322,7 +314,6 @@
                     <a href="./settings.html">Settings</a>
                   </div>
                 </div>
-                <!--end::Row-->
               </li>
               <!--end::Menu Body-->
               <!--begin::Menu Footer-->
@@ -345,16 +336,10 @@
     <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
       <!--begin::Sidebar Brand-->
       <div class="sidebar-brand">
-        <!--begin::Brand Link-->
         <a href="./index.html" class="brand-link">
-          <!--begin::Brand Image-->
           <img src="./assets/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image opacity-75 shadow" />
-          <!--end::Brand Image-->
-          <!--begin::Brand Text-->
           <span class="brand-text fw-light">Icecream ADMIN</span>
-          <!--end::Brand Text-->
         </a>
-        <!--end::Brand Link-->
       </div>
       <!--end::Sidebar Brand-->
       <!--begin::Sidebar Search-->
@@ -408,58 +393,18 @@
     <main class="app-main">
       <!--begin::App Content Header-->
       <div class="app-content-header">
-        <!--begin::Container-->
         <div class="container-fluid">
-          <!--begin::Row-->
-          <div class="row">
+          <div class="row align-items-center">
             <div class="col-sm-6">
-              <h1 class="mb-0 fs-3">Thống kê & Phân tích dữ liệu</h1>
+              <h1 class="mb-0 fs-3 fw-bold text-body">Thống kê & Phân tích dữ liệu</h1>
             </div>
             <div class="col-sm-6">
               <nav aria-label="breadcrumb">
-                <ol class="breadcrumb float-sm-end">
-                  <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                <ol class="breadcrumb float-sm-end mb-0">
+                  <li class="breadcrumb-item"><a href="./index.html">Trang chủ</a></li>
                   <li class="breadcrumb-item active" aria-current="page">Thống kê</li>
                 </ol>
               </nav>
-            </div>
-          </div>
-          <!--end::Row-->
-        </div>
-        <!--end::Container-->
-      </div>
-      <div class="app-content-header">
-        <div class="container-fluid">
-          <div class="row align-items-center">
-            <div class="col-sm-12 text-sm-end mt-2 mt-sm-0">
-              <div class="d-inline-flex flex-wrap gap-2 align-items-center justify-content-sm-end">
-                <div class="btn-group" role="group" aria-label="Bộ lọc thời gian">
-                  <button type="button" class="btn btn-outline-secondary btn-sm">Hôm nay</button>
-                  <button type="button" class="btn btn-outline-secondary btn-sm">7 ngày</button>
-                  <button type="button" class="btn btn-primary btn-sm">30 ngày</button>
-                  <button type="button" class="btn btn-outline-secondary btn-sm">Năm nay</button>
-                </div>
-                <!-- Nút Xuất báo cáo dùng <details> không cần JS -->
-                <details class="css-dropdown">
-                  <summary class="btn btn-success btn-sm dropdown-toggle">
-                    <i class="bi bi-download me-1"></i> Xuất báo cáo
-                  </summary>
-                  <ul class="dropdown-menu dropdown-menu-end shadow">
-                    <li>
-                      <a class="dropdown-item" href="#"><i class="bi bi-file-earmark-excel text-success me-2"></i>Xuất
-                        file Excel (.xlsx)</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#"><i class="bi bi-file-earmark-pdf text-danger me-2"></i>Xuất file
-                        PDF (.pdf)</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#"><i class="bi bi-filetype-csv text-primary me-2"></i>Xuất file
-                        CSV (.csv)</a>
-                    </li>
-                  </ul>
-                </details>
-              </div>
             </div>
           </div>
         </div>
@@ -469,7 +414,453 @@
       <!--begin::App Content-->
       <div class="app-content">
         <div class="container-fluid">
-          <!--begin::KPI Cards Row-->
+
+          <!-- ===================================================================== -->
+          <!-- PHẦN 1: BỘ LỌC KHOẢNG THỜI GIAN & BẢNG TOP 5 KHÁCH HÀNG (TƯỢNG TRƯNG) -->
+          <!-- ===================================================================== -->
+          <div class="card filter-card mb-4 shadow-sm">
+            <div class="card-header border-bottom d-flex flex-wrap justify-content-between align-items-center gap-2">
+              <h3 class="card-title fw-bold mb-0 text-body">
+                <i class="bi bi-calendar-range me-2 text-primary"></i>Thống kê Top 5 khách hàng mua hàng cao nhất
+              </h3>
+              <div class="d-flex flex-wrap gap-2 align-items-center">
+                <div class="btn-group" role="group" aria-label="Chọn nhanh thời gian">
+                  <button type="button" class="btn btn-outline-secondary btn-sm">7 ngày qua</button>
+                  <button type="button" class="btn btn-outline-secondary btn-sm">30 ngày qua</button>
+                  <button type="button" class="btn btn-primary btn-sm">Quý này</button>
+                </div>
+                <details class="css-dropdown">
+                  <summary class="btn btn-success btn-sm dropdown-toggle">
+                    <i class="bi bi-download me-1"></i> Xuất báo cáo
+                  </summary>
+                  <ul class="dropdown-menu dropdown-menu-end shadow">
+                    <li>
+                      <a class="dropdown-item" href="#"><i class="bi bi-file-earmark-excel text-success me-2"></i>Xuất file Excel (.xlsx)</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#"><i class="bi bi-file-earmark-pdf text-danger me-2"></i>Xuất file PDF (.pdf)</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#"><i class="bi bi-filetype-csv text-primary me-2"></i>Xuất file CSV (.csv)</a>
+                    </li>
+                  </ul>
+                </details>
+              </div>
+            </div>
+
+            <div class="card-body">
+              <!-- Form nhập khoảng thời gian thống kê (Giao diện tĩnh tượng trưng) -->
+              <form action="#" method="get" class="row g-3 align-items-end mb-4 p-3 rounded bg-body-tertiary border">
+                <div class="col-12 col-md-4">
+                  <label for="startDate" class="form-label fw-semibold text-body mb-1">
+                    <i class="bi bi-calendar-event me-1 text-primary"></i>Từ ngày:
+                  </label>
+                  <input type="date" id="startDate" name="startDate" class="form-control text-body bg-body"
+                    value="2026-08-01" />
+                </div>
+                <div class="col-12 col-md-4">
+                  <label for="endDate" class="form-label fw-semibold text-body mb-1">
+                    <i class="bi bi-calendar-check me-1 text-primary"></i>Đến ngày:
+                  </label>
+                  <input type="date" id="endDate" name="endDate" class="form-control text-body bg-body"
+                    value="2026-10-31" />
+                </div>
+                <div class="col-12 col-md-4 d-flex gap-2">
+                  <button type="button" class="btn btn-primary fw-semibold flex-grow-1">
+                    <i class="bi bi-funnel-fill me-1"></i> Thống kê dữ liệu
+                  </button>
+                  <button type="reset" class="btn btn-outline-secondary" title="Đặt lại mặc định">
+                    <i class="bi bi-arrow-counterclockwise"></i>
+                  </button>
+                </div>
+              </form>
+
+              <!-- Thông tin tóm tắt khoảng thời gian đang xem -->
+              <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">
+                <div class="text-body">
+                  <span class="fw-semibold">Khoảng thời gian thống kê:</span>
+                  <span class="badge text-bg-primary ms-1 fs-6">01/08/2026 - 31/10/2026</span>
+                  <span class="text-secondary ms-2 small">(Dữ liệu được sắp xếp giảm dần theo tổng tiền mua)</span>
+                </div>
+                <div class="text-body fw-bold fs-6">
+                  Tổng doanh thu Top 5: <span class="text-success fs-5">48.750.000 ₫</span>
+                </div>
+              </div>
+
+              <!-- Bảng xếp hạng 5 khách hàng kèm danh sách đơn hàng chi tiết -->
+              <div class="table-responsive">
+                <table class="table table-bordered align-middle mb-0" id="topCustomersTable">
+                  <thead>
+                    <tr>
+                      <th class="text-center" style="width: 70px;">Hạng</th>
+                      <th style="min-width: 220px;">Khách hàng</th>
+                      <th style="min-width: 440px;">Danh sách đơn hàng trong kỳ (Kèm link xem chi tiết)</th>
+                      <th class="text-center" style="width: 110px;">Số đơn</th>
+                      <th class="text-end" style="width: 180px;">
+                        Tổng tiền mua <i class="bi bi-sort-numeric-down-alt text-primary ms-1"></i>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Khách hàng Top 1 -->
+                    <tr>
+                      <td class="text-center">
+                        <span class="rank-badge rank-1">1</span>
+                      </td>
+                      <td>
+                        <div class="d-flex align-items-center">
+                          <img src="./assets/img/user1-128x128.jpg" alt="Nguyễn Minh Hoàng"
+                            class="rounded-circle me-3 border" style="width: 46px; height: 46px; object-fit: cover;" />
+                          <div>
+                            <div class="fw-bold text-body fs-6">Charlie Kert</div>
+                            <div class="small text-secondary">Mã KH: #CUS-101 • 0901.234.567</div>
+                            <span class="badge text-bg-warning mt-1">Hạng Kim Cương</span>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="order-subtable">
+                          <table class="table table-sm table-hover mb-0">
+                            <thead>
+                              <tr>
+                                <th>Mã đơn</th>
+                                <th>Ngày đặt</th>
+                                <th>Sản phẩm tiêu biểu</th>
+                                <th class="text-end">Thành tiền</th>
+                                <th class="text-center">Chi tiết</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td class="fw-semibold text-primary">#ORD-2026-089</td>
+                                <td>24/10/2026</td>
+                                <td>Kem Matcha (x20), Kem Chiên (x15)</td>
+                                <td class="text-end fw-semibold">6.200.000 ₫</td>
+                                <td class="text-center">
+                                  <a href="./orders.html?id=ORD-2026-089" class="btn btn-xs btn-outline-primary py-0 px-2">
+                                    <i class="bi bi-eye me-1"></i>Xem chi tiết
+                                  </a>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="fw-semibold text-primary">#ORD-2026-064</td>
+                                <td>28/09/2026</td>
+                                <td>Kem Gà Rán (x18), Kem Caramel (x12)</td>
+                                <td class="text-end fw-semibold">5.400.000 ₫</td>
+                                <td class="text-center">
+                                  <a href="./orders.html?id=ORD-2026-064" class="btn btn-xs btn-outline-primary py-0 px-2">
+                                    <i class="bi bi-eye me-1"></i>Xem chi tiết
+                                  </a>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="fw-semibold text-primary">#ORD-2026-019</td>
+                                <td>15/08/2026</td>
+                                <td>Combo Tiệc Kem Matcha & Caramel</td>
+                                <td class="text-end fw-semibold">3.800.000 ₫</td>
+                                <td class="text-center">
+                                  <a href="./orders.html?id=ORD-2026-019" class="btn btn-xs btn-outline-primary py-0 px-2">
+                                    <i class="bi bi-eye me-1"></i>Xem chi tiết
+                                  </a>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </td>
+                      <td class="text-center">
+                        <span class="badge text-bg-primary fs-6">3 đơn</span>
+                      </td>
+                      <td class="text-end">
+                        <div class="fs-5 fw-bold text-success">15.400.000 ₫</div>
+                        <small class="text-secondary">Chiếm 31.6% Top 5</small>
+                      </td>
+                    </tr>
+
+                    <!-- Khách hàng Top 2 -->
+                    <tr>
+                      <td class="text-center">
+                        <span class="rank-badge rank-2">2</span>
+                      </td>
+                      <td>
+                        <div class="d-flex align-items-center">
+                          <img src="./assets/img/user3-128x128.jpg" alt="Trần Thu Hà"
+                            class="rounded-circle me-3 border" style="width: 46px; height: 46px; object-fit: cover;" />
+                          <div>
+                            <div class="fw-bold text-body fs-6">Jeffery Einstein</div>
+                            <div class="small text-secondary">Mã KH: #CUS-104 • 0912.345.678</div>
+                            <span class="badge text-bg-warning mt-1">Hạng Kim Cương</span>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="order-subtable">
+                          <table class="table table-sm table-hover mb-0">
+                            <thead>
+                              <tr>
+                                <th>Mã đơn</th>
+                                <th>Ngày đặt</th>
+                                <th>Sản phẩm tiêu biểu</th>
+                                <th class="text-end">Thành tiền</th>
+                                <th class="text-center">Chi tiết</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td class="fw-semibold text-primary">#ORD-2026-092</td>
+                                <td>26/10/2026</td>
+                                <td>Kem Matcha Thượng Hạng (x25)</td>
+                                <td class="text-end fw-semibold">4.850.000 ₫</td>
+                                <td class="text-center">
+                                  <a href="./orders.html?id=ORD-2026-092" class="btn btn-xs btn-outline-primary py-0 px-2">
+                                    <i class="bi bi-eye me-1"></i>Xem chi tiết
+                                  </a>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="fw-semibold text-primary">#ORD-2026-051</td>
+                                <td>19/09/2026</td>
+                                <td>Kem Chiên Giòn (x20), Kem Gà Rán (x10)</td>
+                                <td class="text-end fw-semibold">4.200.000 ₫</td>
+                                <td class="text-center">
+                                  <a href="./orders.html?id=ORD-2026-051" class="btn btn-xs btn-outline-primary py-0 px-2">
+                                    <i class="bi bi-eye me-1"></i>Xem chi tiết
+                                  </a>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="fw-semibold text-primary">#ORD-2026-022</td>
+                                <td>20/08/2026</td>
+                                <td>Kem Caramel (x18)</td>
+                                <td class="text-end fw-semibold">3.100.000 ₫</td>
+                                <td class="text-center">
+                                  <a href="./orders.html?id=ORD-2026-022" class="btn btn-xs btn-outline-primary py-0 px-2">
+                                    <i class="bi bi-eye me-1"></i>Xem chi tiết
+                                  </a>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </td>
+                      <td class="text-center">
+                        <span class="badge text-bg-primary fs-6">3 đơn</span>
+                      </td>
+                      <td class="text-end">
+                        <div class="fs-5 fw-bold text-success">12.150.000 ₫</div>
+                        <small class="text-secondary">Chiếm 24.9% Top 5</small>
+                      </td>
+                    </tr>
+
+                    <!-- Khách hàng Top 3 -->
+                    <tr>
+                      <td class="text-center">
+                        <span class="rank-badge rank-3">3</span>
+                      </td>
+                      <td>
+                        <div class="d-flex align-items-center">
+                          <img src="./assets/img/user8-128x128.jpg" alt="Lê Quốc Bảo"
+                            class="rounded-circle me-3 border" style="width: 46px; height: 46px; object-fit: cover;" />
+                          <div>
+                            <div class="fw-bold text-body fs-6">King Von</div>
+                            <div class="small text-secondary">Mã KH: #CUS-108 • 0987.654.321</div>
+                            <span class="badge text-bg-info mt-1">Hạng Vàng</span>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="order-subtable">
+                          <table class="table table-sm table-hover mb-0">
+                            <thead>
+                              <tr>
+                                <th>Mã đơn</th>
+                                <th>Ngày đặt</th>
+                                <th>Sản phẩm tiêu biểu</th>
+                                <th class="text-end">Thành tiền</th>
+                                <th class="text-center">Chi tiết</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td class="fw-semibold text-primary">#ORD-2026-081</td>
+                                <td>18/10/2026</td>
+                                <td>Kem Gà Rán Đặc Biệt (x22)</td>
+                                <td class="text-end fw-semibold">5.100.000 ₫</td>
+                                <td class="text-center">
+                                  <a href="./orders.html?id=ORD-2026-081" class="btn btn-xs btn-outline-primary py-0 px-2">
+                                    <i class="bi bi-eye me-1"></i>Xem chi tiết
+                                  </a>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="fw-semibold text-primary">#ORD-2026-045</td>
+                                <td>10/09/2026</td>
+                                <td>Kem Matcha (x15), Kem Caramel (x10)</td>
+                                <td class="text-end fw-semibold">3.800.000 ₫</td>
+                                <td class="text-center">
+                                  <a href="./orders.html?id=ORD-2026-045" class="btn btn-xs btn-outline-primary py-0 px-2">
+                                    <i class="bi bi-eye me-1"></i>Xem chi tiết
+                                  </a>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </td>
+                      <td class="text-center">
+                        <span class="badge text-bg-primary fs-6">2 đơn</span>
+                      </td>
+                      <td class="text-end">
+                        <div class="fs-5 fw-bold text-success">8.900.000 ₫</div>
+                        <small class="text-secondary">Chiếm 18.3% Top 5</small>
+                      </td>
+                    </tr>
+
+                    <!-- Khách hàng Top 4 -->
+                    <tr>
+                      <td class="text-center">
+                        <span class="rank-badge rank-other">4</span>
+                      </td>
+                      <td>
+                        <div class="d-flex align-items-center">
+                          <img src="./assets/img/user2-160x160.jpg" alt="Phạm Gia Huy"
+                            class="rounded-circle me-3 border" style="width: 46px; height: 46px; object-fit: cover;" />
+                          <div>
+                            <div class="fw-bold text-body fs-6">Quang Trung</div>
+                            <div class="small text-secondary">Mã KH: #CUS-112 • 0933.445.566</div>
+                            <span class="badge text-bg-info mt-1">Hạng Vàng</span>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="order-subtable">
+                          <table class="table table-sm table-hover mb-0">
+                            <thead>
+                              <tr>
+                                <th>Mã đơn</th>
+                                <th>Ngày đặt</th>
+                                <th>Sản phẩm tiêu biểu</th>
+                                <th class="text-end">Thành tiền</th>
+                                <th class="text-center">Chi tiết</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td class="fw-semibold text-primary">#ORD-2026-077</td>
+                                <td>12/10/2026</td>
+                                <td>Kem Chiên (x16), Kem Matcha (x10)</td>
+                                <td class="text-end fw-semibold">3.950.000 ₫</td>
+                                <td class="text-center">
+                                  <a href="./orders.html?id=ORD-2026-077" class="btn btn-xs btn-outline-primary py-0 px-2">
+                                    <i class="bi bi-eye me-1"></i>Xem chi tiết
+                                  </a>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="fw-semibold text-primary">#ORD-2026-031</td>
+                                <td>29/08/2026</td>
+                                <td>Combo Quà Tặng Kem Caramel (x12)</td>
+                                <td class="text-end fw-semibold">2.850.000 ₫</td>
+                                <td class="text-center">
+                                  <a href="./orders.html?id=ORD-2026-031" class="btn btn-xs btn-outline-primary py-0 px-2">
+                                    <i class="bi bi-eye me-1"></i>Xem chi tiết
+                                  </a>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </td>
+                      <td class="text-center">
+                        <span class="badge text-bg-primary fs-6">2 đơn</span>
+                      </td>
+                      <td class="text-end">
+                        <div class="fs-5 fw-bold text-success">6.800.000 ₫</div>
+                        <small class="text-secondary">Chiếm 13.9% Top 5</small>
+                      </td>
+                    </tr>
+
+                    <!-- Khách hàng Top 5 -->
+                    <tr>
+                      <td class="text-center">
+                        <span class="rank-badge rank-other">5</span>
+                      </td>
+                      <td>
+                        <div class="d-flex align-items-center">
+                          <img src="./assets/img/user1-128x128.jpg" alt="Đặng Khánh Linh"
+                            class="rounded-circle me-3 border" style="width: 46px; height: 46px; object-fit: cover;" />
+                          <div>
+                            <div class="fw-bold text-body fs-6">Nguyễn Huệ</div>
+                            <div class="small text-secondary">Mã KH: #CUS-119 • 0977.889.900</div>
+                            <span class="badge text-bg-secondary mt-1">Hạng Bạc</span>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="order-subtable">
+                          <table class="table table-sm table-hover mb-0">
+                            <thead>
+                              <tr>
+                                <th>Mã đơn</th>
+                                <th>Ngày đặt</th>
+                                <th>Sản phẩm tiêu biểu</th>
+                                <th class="text-end">Thành tiền</th>
+                                <th class="text-center">Chi tiết</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td class="fw-semibold text-primary">#ORD-2026-070</td>
+                                <td>05/10/2026</td>
+                                <td>Kem Matcha (x12), Kem Gà Rán (x8)</td>
+                                <td class="text-end fw-semibold">3.200.000 ₫</td>
+                                <td class="text-center">
+                                  <a href="./orders.html?id=ORD-2026-070" class="btn btn-xs btn-outline-primary py-0 px-2">
+                                    <i class="bi bi-eye me-1"></i>Xem chi tiết
+                                  </a>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="fw-semibold text-primary">#ORD-2026-014</td>
+                                <td>09/08/2026</td>
+                                <td>Kem Chiên (x10), Kem Caramel (x6)</td>
+                                <td class="text-end fw-semibold">2.300.000 ₫</td>
+                                <td class="text-center">
+                                  <a href="./orders.html?id=ORD-2026-014" class="btn btn-xs btn-outline-primary py-0 px-2">
+                                    <i class="bi bi-eye me-1"></i>Xem chi tiết
+                                  </a>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </td>
+                      <td class="text-center">
+                        <span class="badge text-bg-primary fs-6">2 đơn</span>
+                      </td>
+                      <td class="text-end">
+                        <div class="fs-5 fw-bold text-success">5.500.000 ₫</div>
+                        <small class="text-secondary">Chiếm 11.3% Top 5</small>
+                      </td>
+                    </tr>
+                  </tbody>
+                  <tfoot>
+                    <tr class="customer-summary-row">
+                      <td colspan="3" class="text-end fw-bold text-body fs-6">
+                        TỔNG CỘNG MUA HÀNG CỦA TOP 5 KHÁCH HÀNG TRONG KỲ:
+                      </td>
+                      <td class="text-center fw-bold text-body fs-6">12 đơn</td>
+                      <td class="text-end fw-bold text-success fs-5">48.750.000 ₫</td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- ===================================================================== -->
+          <!-- PHẦN 2: KPI CARDS TỔNG QUAN                                           -->
+          <!-- ===================================================================== -->
           <div class="row">
             <div class="col-12 col-sm-6 col-md-3">
               <div class="info-box shadow-sm">
@@ -478,10 +869,9 @@
                 </span>
                 <div class="info-box-content">
                   <span class="info-box-text text-secondary">Tổng doanh thu</span>
-                  <span class="info-box-number fs-5 fw-bold">485.200.000 ₫</span>
+                  <span class="info-box-number fs-5 fw-bold text-body">485.200.000 ₫</span>
                   <small class="text-success fw-semibold">
-                    <i class="bi bi-arrow-up-right"></i> +18.4% <span class="text-secondary fw-normal">so với tháng
-                      trước</span>
+                    <i class="bi bi-arrow-up-right"></i> +18.4% <span class="text-secondary fw-normal">so với tháng trước</span>
                   </small>
                 </div>
               </div>
@@ -494,10 +884,9 @@
                 </span>
                 <div class="info-box-content">
                   <span class="info-box-text text-secondary">Tổng đơn hàng</span>
-                  <span class="info-box-number fs-5 fw-bold">1,842</span>
+                  <span class="info-box-number fs-5 fw-bold text-body">1,842</span>
                   <small class="text-success fw-semibold">
-                    <i class="bi bi-arrow-up-right"></i> +12.1% <span class="text-secondary fw-normal">so với tháng
-                      trước</span>
+                    <i class="bi bi-arrow-up-right"></i> +12.1% <span class="text-secondary fw-normal">so với tháng trước</span>
                   </small>
                 </div>
               </div>
@@ -506,14 +895,13 @@
             <div class="col-12 col-sm-6 col-md-3">
               <div class="info-box shadow-sm">
                 <span class="info-box-icon text-bg-warning shadow-sm">
-                  <i class="bi bi-person-plus-fill text-white"></i>
+                  <i class="bi bi-person-plus-fill"></i>
                 </span>
                 <div class="info-box-content">
                   <span class="info-box-text text-secondary">Khách hàng mới</span>
-                  <span class="info-box-number fs-5 fw-bold">428</span>
+                  <span class="info-box-number fs-5 fw-bold text-body">428</span>
                   <small class="text-success fw-semibold">
-                    <i class="bi bi-arrow-up-right"></i> +8.5% <span class="text-secondary fw-normal">so với tháng
-                      trước</span>
+                    <i class="bi bi-arrow-up-right"></i> +8.5% <span class="text-secondary fw-normal">so với tháng trước</span>
                   </small>
                 </div>
               </div>
@@ -526,10 +914,9 @@
                 </span>
                 <div class="info-box-content">
                   <span class="info-box-text text-secondary">Tỷ lệ chuyển đổi</span>
-                  <span class="info-box-number fs-5 fw-bold">4.65%</span>
+                  <span class="info-box-number fs-5 fw-bold text-body">4.65%</span>
                   <small class="text-danger fw-semibold">
-                    <i class="bi bi-arrow-down-right"></i> -0.4% <span class="text-secondary fw-normal">so với tháng
-                      trước</span>
+                    <i class="bi bi-arrow-down-right"></i> -0.4% <span class="text-secondary fw-normal">so với tháng trước</span>
                   </small>
                 </div>
               </div>
@@ -537,17 +924,18 @@
           </div>
           <!--end::KPI Cards Row-->
 
-          <!--begin::Main Charts Row-->
+          <!-- ===================================================================== -->
+          <!-- PHẦN 3: BIỂU ĐỒ DOANH THU & TỶ TRỌNG DANH MỤC                         -->
+          <!-- ===================================================================== -->
           <div class="row mt-2">
             <!-- Biểu đồ Doanh thu & Lợi nhuận (Pure CSS + SVG) -->
             <div class="col-lg-8">
               <div class="card mb-4 shadow-sm">
                 <div class="card-header border-0 d-flex flex-wrap justify-content-between align-items-center gap-2">
-                  <h3 class="card-title fw-bold mb-0">
+                  <h3 class="card-title fw-bold mb-0 text-body">
                     <i class="bi bi-bar-chart-steps me-2 text-primary"></i>Biểu đồ Doanh thu & Lợi nhuận (Năm 2026)
                   </h3>
-                  <!-- Chú thích rõ nét -->
-                  <div class="d-flex align-items-center gap-3 fs-7 fw-semibold">
+                  <div class="d-flex align-items-center gap-3 fs-7 fw-semibold text-body">
                     <span><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu (Triệu ₫)</span>
                     <span><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận ròng (Triệu ₫)</span>
                   </div>
@@ -555,14 +943,12 @@
                 <div class="card-body pt-1">
                   <div class="css-chart-box">
                     <span class="y-axis-title">Triệu VNĐ</span>
-                    <!-- Các dòng kẻ ngang trục Y (540 -> 90) -->
                     <div class="chart-grid-line"><span>540</span></div>
                     <div class="chart-grid-line"><span>450</span></div>
                     <div class="chart-grid-line"><span>360</span></div>
                     <div class="chart-grid-line"><span>270</span></div>
                     <div class="chart-grid-line"><span>180</span></div>
-                    <div class="chart-grid-line"
-                      style="border-bottom-style: solid; border-color: rgba(255,255,255,0.25);"><span>90</span></div>
+                    <div class="chart-grid-line baseline"><span>90</span></div>
 
                     <!-- Đường biểu diễn Lợi nhuận ròng bằng SVG thuần -->
                     <svg class="profit-svg-overlay" viewBox="0 0 1000 270" preserveAspectRatio="none">
@@ -572,143 +958,111 @@
                           <stop offset="100%" stop-color="#10b981" stop-opacity="0.02" />
                         </linearGradient>
                       </defs>
-                      <!-- Vùng tô màu dưới đường lợi nhuận -->
                       <path
                         d="M 50,219 L 150,207 L 250,216 L 350,195 L 450,186 L 550,198 L 650,209 L 750,179 L 850,166 L 950,131 L 950,270 L 50,270 Z"
                         fill="url(#profitAreaGrad)" />
-                      <!-- Đường kẻ xanh lá -->
                       <polyline fill="none" stroke="#10b981" stroke-width="3.5" stroke-linecap="round"
                         stroke-linejoin="round"
                         points="50,219 150,207 250,216 350,195 450,186 550,198 650,209 750,179 850,166 950,131" />
                     </svg>
 
-                    <!-- 10 Cột Doanh thu kèm Tooltip CSS (Di chuột vào cột bất kỳ để xem) -->
+                    <!-- 10 Cột Doanh thu kèm Tooltip CSS -->
                     <div class="chart-plot-area">
-                      <!-- Thg 1: 280 / 175 -->
                       <div class="chart-col-group" style="--bar-h: 42.2%;">
                         <div class="css-tooltip">
                           <div class="css-tooltip-title">Tháng 1 / 2026</div>
-                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>280 Triệu
-                              ₫</strong></div>
-                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>175 Triệu
-                              ₫</strong></div>
+                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>280 Triệu ₫</strong></div>
+                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>175 Triệu ₫</strong></div>
                         </div>
                         <div class="chart-bar" style="height: 42.2%;"></div>
                         <span class="x-axis-label">Thg 1</span>
                       </div>
 
-                      <!-- Thg 2: 310 / 195 -->
                       <div class="chart-col-group" style="--bar-h: 48.9%;">
                         <div class="css-tooltip">
                           <div class="css-tooltip-title">Tháng 2 / 2026</div>
-                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>310 Triệu
-                              ₫</strong></div>
-                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>195 Triệu
-                              ₫</strong></div>
+                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>310 Triệu ₫</strong></div>
+                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>195 Triệu ₫</strong></div>
                         </div>
                         <div class="chart-bar" style="height: 48.9%;"></div>
                         <span class="x-axis-label">Thg 2</span>
                       </div>
 
-                      <!-- Thg 3: 295 / 180 -->
                       <div class="chart-col-group" style="--bar-h: 45.6%;">
                         <div class="css-tooltip">
                           <div class="css-tooltip-title">Tháng 3 / 2026</div>
-                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>295 Triệu
-                              ₫</strong></div>
-                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>180 Triệu
-                              ₫</strong></div>
+                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>295 Triệu ₫</strong></div>
+                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>180 Triệu ₫</strong></div>
                         </div>
                         <div class="chart-bar" style="height: 45.6%;"></div>
                         <span class="x-axis-label">Thg 3</span>
                       </div>
 
-                      <!-- Thg 4: 340 / 215 -->
                       <div class="chart-col-group" style="--bar-h: 55.6%;">
                         <div class="css-tooltip">
                           <div class="css-tooltip-title">Tháng 4 / 2026</div>
-                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>340 Triệu
-                              ₫</strong></div>
-                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>215 Triệu
-                              ₫</strong></div>
+                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>340 Triệu ₫</strong></div>
+                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>215 Triệu ₫</strong></div>
                         </div>
                         <div class="chart-bar" style="height: 55.6%;"></div>
                         <span class="x-axis-label">Thg 4</span>
                       </div>
 
-                      <!-- Thg 5: 360 / 230 -->
                       <div class="chart-col-group" style="--bar-h: 60.0%;">
                         <div class="css-tooltip">
                           <div class="css-tooltip-title">Tháng 5 / 2026</div>
-                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>360 Triệu
-                              ₫</strong></div>
-                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>230 Triệu
-                              ₫</strong></div>
+                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>360 Triệu ₫</strong></div>
+                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>230 Triệu ₫</strong></div>
                         </div>
                         <div class="chart-bar" style="height: 60.0%;"></div>
                         <span class="x-axis-label">Thg 5</span>
                       </div>
 
-                      <!-- Thg 6: 330 / 210 -->
                       <div class="chart-col-group" style="--bar-h: 53.3%;">
                         <div class="css-tooltip">
                           <div class="css-tooltip-title">Tháng 6 / 2026</div>
-                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>330 Triệu
-                              ₫</strong></div>
-                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>210 Triệu
-                              ₫</strong></div>
+                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>330 Triệu ₫</strong></div>
+                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>210 Triệu ₫</strong></div>
                         </div>
                         <div class="chart-bar" style="height: 53.3%;"></div>
                         <span class="x-axis-label">Thg 6</span>
                       </div>
 
-                      <!-- Thg 7: 315 / 192 -->
                       <div class="chart-col-group" style="--bar-h: 50.0%;">
                         <div class="css-tooltip">
                           <div class="css-tooltip-title">Tháng 7 / 2026</div>
-                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>315 Triệu
-                              ₫</strong></div>
-                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>192 Triệu
-                              ₫</strong></div>
+                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>315 Triệu ₫</strong></div>
+                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>192 Triệu ₫</strong></div>
                         </div>
                         <div class="chart-bar" style="height: 50.0%;"></div>
                         <span class="x-axis-label">Thg 7</span>
                       </div>
 
-                      <!-- Thg 8: 382 / 241 -->
                       <div class="chart-col-group" style="--bar-h: 64.9%;">
                         <div class="css-tooltip">
                           <div class="css-tooltip-title">Tháng 8 / 2026</div>
-                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>382 Triệu
-                              ₫</strong></div>
-                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>241 Triệu
-                              ₫</strong></div>
+                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>382 Triệu ₫</strong></div>
+                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>241 Triệu ₫</strong></div>
                         </div>
                         <div class="chart-bar" style="height: 64.9%;"></div>
                         <span class="x-axis-label">Thg 8</span>
                       </div>
 
-                      <!-- Thg 9: 410 / 264 -->
                       <div class="chart-col-group" style="--bar-h: 71.1%;">
                         <div class="css-tooltip">
                           <div class="css-tooltip-title">Tháng 9 / 2026</div>
-                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>410 Triệu
-                              ₫</strong></div>
-                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>264 Triệu
-                              ₫</strong></div>
+                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>410 Triệu ₫</strong></div>
+                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>264 Triệu ₫</strong></div>
                         </div>
                         <div class="chart-bar" style="height: 71.1%;"></div>
                         <span class="x-axis-label">Thg 9</span>
                       </div>
 
-                      <!-- Thg 10: 485 / 322 -->
                       <div class="chart-col-group" style="--bar-h: 87.8%;">
                         <div class="css-tooltip">
                           <div class="css-tooltip-title">Tháng 10 / 2026</div>
-                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>485 Triệu
-                              ₫</strong></div>
-                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>322 Triệu
-                              ₫</strong></div>
+                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>485 Triệu ₫</strong></div>
+                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>322 Triệu ₫</strong></div>
                         </div>
                         <div class="chart-bar" style="height: 87.8%;"></div>
                         <span class="x-axis-label">Thg 10</span>
@@ -720,22 +1074,22 @@
                   <div class="row text-center">
                     <div class="col-sm-3 col-6 border-end">
                       <span class="text-success fw-semibold"><i class="bi bi-caret-up-fill"></i> 17%</span>
-                      <h5 class="fw-bold mb-0">485.2 Tr</h5>
+                      <h5 class="fw-bold mb-0 text-body">485.2 Tr</h5>
                       <span class="text-secondary fs-7 text-uppercase">Tổng doanh thu</span>
                     </div>
                     <div class="col-sm-3 col-6 border-end">
                       <span class="text-info fw-semibold"><i class="bi bi-caret-left-fill"></i> 0%</span>
-                      <h5 class="fw-bold mb-0">162.8 Tr</h5>
+                      <h5 class="fw-bold mb-0 text-body">162.8 Tr</h5>
                       <span class="text-secondary fs-7 text-uppercase">Chi phí vận hành</span>
                     </div>
                     <div class="col-sm-3 col-6 border-end">
                       <span class="text-success fw-semibold"><i class="bi bi-caret-up-fill"></i> 22%</span>
-                      <h5 class="fw-bold mb-0">322.4 Tr</h5>
+                      <h5 class="fw-bold mb-0 text-body">322.4 Tr</h5>
                       <span class="text-secondary fs-7 text-uppercase">Lợi nhuận ròng</span>
                     </div>
                     <div class="col-sm-3 col-6">
                       <span class="text-warning fw-semibold"><i class="bi bi-caret-up-fill"></i> 92%</span>
-                      <h5 class="fw-bold mb-0">1,842</h5>
+                      <h5 class="fw-bold mb-0 text-body">1,842</h5>
                       <span class="text-secondary fs-7 text-uppercase">Đơn hoàn tất</span>
                     </div>
                   </div>
@@ -743,11 +1097,11 @@
               </div>
             </div>
 
-            <!-- Biểu đồ Cơ cấu Danh mục (Pure CSS Conic-Gradient) -->
+            <!-- Biểu đồ Cơ cấu Danh mục -->
             <div class="col-lg-4">
               <div class="card mb-4 shadow-sm">
                 <div class="card-header border-0">
-                  <h3 class="card-title fw-bold">
+                  <h3 class="card-title fw-bold text-body">
                     <i class="bi bi-pie-chart-fill me-2 text-success"></i>Tỷ trọng theo danh mục
                   </h3>
                 </div>
@@ -760,19 +1114,19 @@
                     </div>
                   </div>
                   <ul class="list-group list-group-flush mt-3">
-                    <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2">
+                    <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2 text-body">
                       <span><i class="bi bi-circle-fill text-primary me-2"></i>Đồ uống & Caramel</span>
                       <span class="fw-bold">42% (203.7 Tr)</span>
                     </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2">
+                    <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2 text-body">
                       <span><i class="bi bi-circle-fill text-success me-2"></i>Bánh ngọt & Đồ ăn nhẹ</span>
                       <span class="fw-bold">28% (135.8 Tr)</span>
                     </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2">
+                    <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2 text-body">
                       <span><i class="bi bi-circle-fill text-warning me-2"></i>Combo Quà tặng</span>
                       <span class="fw-bold">18% (87.3 Tr)</span>
                     </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2">
+                    <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2 text-body">
                       <span><i class="bi bi-circle-fill text-danger me-2"></i>Phụ kiện & Khác</span>
                       <span class="fw-bold">12% (58.4 Tr)</span>
                     </li>
@@ -783,23 +1137,23 @@
           </div>
           <!--end::Main Charts Row-->
 
-          <!--begin::Second Row (Traffic & Top Products)-->
+          <!-- ===================================================================== -->
+          <!-- PHẦN 4: HIỆU SUẤT KÊNH BÁN HÀNG & TOP SẢN PHẨM                        -->
+          <!-- ===================================================================== -->
           <div class="row">
-            <!-- Nguồn truy cập & Kênh bán hàng (Pure CSS Horizontal Bars - Không bao giờ đè chữ) -->
             <div class="col-lg-6">
               <div class="card mb-4 shadow-sm">
                 <div class="card-header border-0 d-flex flex-wrap justify-content-between align-items-center gap-2">
-                  <h3 class="card-title fw-bold mb-0">
+                  <h3 class="card-title fw-bold mb-0 text-body">
                     <i class="bi bi-globe2 me-2 text-info"></i>Hiệu suất kênh bán hàng & Lưu lượng
                   </h3>
-                  <div class="d-flex gap-3 fs-7 fw-semibold">
+                  <div class="d-flex gap-3 fs-7 fw-semibold text-body">
                     <span><i class="bi bi-square-fill text-info me-1"></i>Lượt truy cập</span>
                     <span><i class="bi bi-square-fill text-primary me-1"></i>Đơn hàng chuyển đổi</span>
                   </div>
                 </div>
                 <div class="card-body">
                   <div class="h-bar-list">
-                    <!-- Kênh 1 -->
                     <div class="h-bar-row">
                       <div class="h-bar-label">Website Trực tiếp</div>
                       <div class="h-bar-tracks">
@@ -809,12 +1163,11 @@
                         </div>
                         <div class="h-bar-line">
                           <div class="h-bar-fill order" style="width: 6.5%;"></div>
-                          <span class="h-bar-val text-info">780</span>
+                          <span class="h-bar-val text-primary">780</span>
                         </div>
                       </div>
                     </div>
 
-                    <!-- Kênh 2 -->
                     <div class="h-bar-row">
                       <div class="h-bar-label">Facebook / Instagram</div>
                       <div class="h-bar-tracks">
@@ -824,12 +1177,11 @@
                         </div>
                         <div class="h-bar-line">
                           <div class="h-bar-fill order" style="width: 4.5%;"></div>
-                          <span class="h-bar-val text-info">520</span>
+                          <span class="h-bar-val text-primary">520</span>
                         </div>
                       </div>
                     </div>
 
-                    <!-- Kênh 3 (Hiển thị đầy đủ không bị cắt chữ) -->
                     <div class="h-bar-row">
                       <div class="h-bar-label">Sàn TMĐT (Shopee/TikTok)</div>
                       <div class="h-bar-tracks">
@@ -839,12 +1191,11 @@
                         </div>
                         <div class="h-bar-line">
                           <div class="h-bar-fill order" style="width: 3.0%;"></div>
-                          <span class="h-bar-val text-info">310</span>
+                          <span class="h-bar-val text-primary">310</span>
                         </div>
                       </div>
                     </div>
 
-                    <!-- Kênh 4 -->
                     <div class="h-bar-row">
                       <div class="h-bar-label">Tìm kiếm Google</div>
                       <div class="h-bar-tracks">
@@ -854,12 +1205,11 @@
                         </div>
                         <div class="h-bar-line">
                           <div class="h-bar-fill order" style="width: 1.8%;"></div>
-                          <span class="h-bar-val text-info">162</span>
+                          <span class="h-bar-val text-primary">162</span>
                         </div>
                       </div>
                     </div>
 
-                    <!-- Kênh 5 -->
                     <div class="h-bar-row">
                       <div class="h-bar-label">Giới thiệu / Affiliate</div>
                       <div class="h-bar-tracks">
@@ -869,13 +1219,12 @@
                         </div>
                         <div class="h-bar-line">
                           <div class="h-bar-fill order" style="width: 1.0%;"></div>
-                          <span class="h-bar-val text-info">70</span>
+                          <span class="h-bar-val text-primary">70</span>
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  <!-- Thang đo trục X -->
                   <div class="h-bar-axis">
                     <span>0</span>
                     <span>4.000</span>
@@ -887,11 +1236,11 @@
               </div>
             </div>
 
-            <!-- Top Sản phẩm bán chạy -->
+            <!-- Top Sản phẩm bán chạy (Giữ nguyên đường dẫn hình ảnh) -->
             <div class="col-lg-6">
               <div class="card mb-4 shadow-sm">
                 <div class="card-header border-0 d-flex justify-content-between align-items-center">
-                  <h3 class="card-title fw-bold">
+                  <h3 class="card-title fw-bold text-body">
                     <i class="bi bi-trophy-fill me-2 text-warning"></i>Top sản phẩm doanh thu cao nhất
                   </h3>
                   <a href="products.html" class="btn btn-sm btn-outline-primary">Xem tất cả</a>
@@ -914,7 +1263,7 @@
                               <img src="../assets/img/products/matcha.png" alt="Kem Matcha" class="rounded me-3"
                                 style="width: 42px; height: 42px; object-fit: cover" />
                               <div>
-                                <div class="fw-semibold">Kem Matcha</div>
+                                <div class="fw-semibold text-body">Kem Matcha</div>
                                 <small class="text-secondary">Mã: #PRD-001</small>
                               </div>
                             </div>
@@ -926,7 +1275,7 @@
                             </div>
                             <small class="text-secondary">85% mục tiêu</small>
                           </td>
-                          <td class="text-end fw-bold">96.000.000 ₫</td>
+                          <td class="text-end fw-bold text-body">96.000.000 ₫</td>
                         </tr>
                         <tr>
                           <td>
@@ -934,7 +1283,7 @@
                               <img src="../assets/img/products/chien.png" alt="Kem Chiên" class="rounded me-3"
                                 style="width: 42px; height: 42px; object-fit: cover" />
                               <div>
-                                <div class="fw-semibold">Kem Chiên</div>
+                                <div class="fw-semibold text-body">Kem Chiên</div>
                                 <small class="text-secondary">Mã: #PRD-002</small>
                               </div>
                             </div>
@@ -946,7 +1295,7 @@
                             </div>
                             <small class="text-secondary">72% mục tiêu</small>
                           </td>
-                          <td class="text-end fw-bold">76.800.000 ₫</td>
+                          <td class="text-end fw-bold text-body">76.800.000 ₫</td>
                         </tr>
                         <tr>
                           <td>
@@ -954,7 +1303,7 @@
                               <img src="../assets/img/products/ga_ran.png" alt="Kem Gà Rán" class="rounded me-3"
                                 style="width: 42px; height: 42px; object-fit: cover" />
                               <div>
-                                <div class="fw-semibold">Kem Gà Rán</div>
+                                <div class="fw-semibold text-body">Kem Gà Rán</div>
                                 <small class="text-secondary">Mã: #PRD-003</small>
                               </div>
                             </div>
@@ -966,7 +1315,7 @@
                             </div>
                             <small class="text-secondary">60% mục tiêu</small>
                           </td>
-                          <td class="text-end fw-bold">62.400.000 ₫</td>
+                          <td class="text-end fw-bold text-body">62.400.000 ₫</td>
                         </tr>
                         <tr>
                           <td>
@@ -974,7 +1323,7 @@
                               <img src="../assets/img/products/caramel.png" alt="Kem Caramel" class="rounded me-3"
                                 style="width: 42px; height: 42px; object-fit: cover" />
                               <div>
-                                <div class="fw-semibold">Kem Caramel</div>
+                                <div class="fw-semibold text-body">Kem Caramel</div>
                                 <small class="text-secondary">Mã: #PRD-004</small>
                               </div>
                             </div>
@@ -986,7 +1335,7 @@
                             </div>
                             <small class="text-secondary">48% mục tiêu</small>
                           </td>
-                          <td class="text-end fw-bold">53.100.000 ₫</td>
+                          <td class="text-end fw-bold text-body">53.100.000 ₫</td>
                         </tr>
                       </tbody>
                     </table>
@@ -996,107 +1345,6 @@
             </div>
           </div>
           <!--end::Second Row-->
-
-          <!--begin::Detailed Monthly Report Table-->
-          <div class="row">
-            <div class="col-12">
-              <div class="card mb-4 shadow-sm">
-                <div class="card-header d-flex justify-content-between align-items-center">
-                  <h3 class="card-title fw-bold">
-                    <i class="bi bi-table me-2 text-primary"></i>Bảng kê chi tiết chỉ số kinh doanh theo kỳ
-                  </h3>
-                  <div class="input-group input-group-sm" style="width: 240px;">
-                    <input type="text" class="form-control" placeholder="Tìm kiếm kỳ báo cáo..." />
-                    <button class="btn btn-outline-secondary" type="button">
-                      <i class="bi bi-search"></i>
-                    </button>
-                  </div>
-                </div>
-                <div class="card-body p-0">
-                  <div class="table-responsive">
-                    <table class="table table-striped table-hover align-middle mb-0">
-                      <thead>
-                        <tr>
-                          <th>Kỳ báo cáo</th>
-                          <th class="text-center">Số đơn hàng</th>
-                          <th class="text-center">Khách hàng mới</th>
-                          <th class="text-end">Doanh thu gộp</th>
-                          <th class="text-end">Lợi nhuận ròng</th>
-                          <th>Tiến độ KPI</th>
-                          <th class="text-center">Đánh giá</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td class="fw-semibold">Tháng 10/2026</td>
-                          <td class="text-center">1,842</td>
-                          <td class="text-center">428</td>
-                          <td class="text-end">485.200.000 ₫</td>
-                          <td class="text-end text-success fw-bold">322.400.000 ₫</td>
-                          <td style="width: 180px;">
-                            <div class="progress progress-xs">
-                              <div class="progress-bar text-bg-success" style="width: 95%"></div>
-                            </div>
-                          </td>
-                          <td class="text-center"><span class="badge text-bg-success">Vượt chỉ tiêu (95%)</span></td>
-                        </tr>
-                        <tr>
-                          <td class="fw-semibold">Tháng 09/2026</td>
-                          <td class="text-center">1,643</td>
-                          <td class="text-center">394</td>
-                          <td class="text-end">409.800.000 ₫</td>
-                          <td class="text-end text-success fw-bold">264.200.000 ₫</td>
-                          <td>
-                            <div class="progress progress-xs">
-                              <div class="progress-bar text-bg-primary" style="width: 84%"></div>
-                            </div>
-                          </td>
-                          <td class="text-center"><span class="badge text-bg-primary">Đạt yêu cầu (84%)</span></td>
-                        </tr>
-                        <tr>
-                          <td class="fw-semibold">Tháng 08/2026</td>
-                          <td class="text-center">1,520</td>
-                          <td class="text-center">350</td>
-                          <td class="text-end">382.500.000 ₫</td>
-                          <td class="text-end text-success fw-bold">241.000.000 ₫</td>
-                          <td>
-                            <div class="progress progress-xs">
-                              <div class="progress-bar text-bg-primary" style="width: 78%"></div>
-                            </div>
-                          </td>
-                          <td class="text-center"><span class="badge text-bg-primary">Đạt yêu cầu (78%)</span></td>
-                        </tr>
-                        <tr>
-                          <td class="fw-semibold">Tháng 07/2026</td>
-                          <td class="text-center">1,290</td>
-                          <td class="text-center">285</td>
-                          <td class="text-end">315.000.000 ₫</td>
-                          <td class="text-end text-success fw-bold">192.500.000 ₫</td>
-                          <td>
-                            <div class="progress progress-xs">
-                              <div class="progress-bar text-bg-warning" style="width: 65%"></div>
-                            </div>
-                          </td>
-                          <td class="text-center"><span class="badge text-bg-warning">Trung bình (65%)</span></td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-                <div class="card-footer clearfix">
-                  <span class="text-secondary fs-7">Hiển thị 1 đến 4 trong tổng số 12 kỳ báo cáo</span>
-                  <ul class="pagination pagination-sm m-0 float-end">
-                    <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!--end::Detailed Monthly Report Table-->
         </div>
       </div>
       <!--end::App Content-->
@@ -1115,298 +1363,43 @@
     <!--end::Footer-->
   </div>
   <!--end::App Wrapper-->
-</body>
-<!--begin::Script-->
-<!--begin::Third Party Plugin(OverlayScrollbars)-->
-<script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.16.0/browser/overlayscrollbars.browser.es6.min.js"
-  crossorigin="anonymous"></script>
-<!--end::Third Party Plugin(OverlayScrollbars)--><!--begin::Required Plugin(popperjs for Bootstrap 5)-->
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-  crossorigin="anonymous"></script>
-<!--end::Required Plugin(popperjs for Bootstrap 5)--><!--begin::Required Plugin(Bootstrap 5)-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
-<!--end::Required Plugin(Bootstrap 5)--><!--begin::Required Plugin(AdminLTE)-->
-<script src="./js/adminlte.js"></script>
-<!--end::Required Plugin(AdminLTE)-->
-<!--begin::OverlayScrollbars Configure-->
-<script>
-  const SELECTOR_SIDEBAR_WRAPPER = '.sidebar-wrapper';
-  const Default = {
-    scrollbarTheme: 'os-theme-light',
-    scrollbarAutoHide: 'leave',
-    scrollbarClickScroll: true,
-  };
-  document.addEventListener('DOMContentLoaded', function () {
-    const sidebarWrapper = document.querySelector(SELECTOR_SIDEBAR_WRAPPER);
 
-    // Disable OverlayScrollbars on mobile devices to prevent touch interference
-    const isMobile = window.innerWidth <= 992;
+  <!--begin::Script-->
+  <script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.16.0/browser/overlayscrollbars.browser.es6.min.js"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
+  <script src="./js/adminlte.js"></script>
 
-    if (
-      sidebarWrapper &&
-      globalThis.OverlayScrollbarsGlobal?.OverlayScrollbars !== undefined &&
-      !isMobile
-    ) {
-      OverlayScrollbarsGlobal.OverlayScrollbars(sidebarWrapper, {
-        scrollbars: {
-          theme: Default.scrollbarTheme,
-          autoHide: Default.scrollbarAutoHide,
-          clickScroll: Default.scrollbarClickScroll,
-        },
-      });
-    }
-  });
-</script>
-<!--end::OverlayScrollbars Configure-->
-
-<!--begin::Color Mode Toggle-->
-<!-- The light/dark/auto switcher ships in adminlte.js as the ColorMode
-     module (since 4.1) — no page script needed. Only the no-flash snippet
-     in <head> stays inline, because it must run before first paint. -->
-<!--end::Color Mode Toggle-->
-
-<!-- OPTIONAL SCRIPTS -->
-
-<!-- Chart.js + AdminLTE chart theme -->
-<!--begin::Third Party Plugin(Chart.js)-->
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"
-  integrity="sha256-SERKgtTty1vsDxll+qzd4Y2cF9swY9BCq62i9wXJ9Uo=" crossorigin="anonymous"></script>
-<!--end::Third Party Plugin(Chart.js)-->
-<!--begin::Chart.js theme preset-->
-<script>
-  // Styles every Chart.js chart on the page from AdminLTE's CSS variables —
-  // font, text, gridlines, tooltip and legend — and keeps them in step with the
-  // colour mode (ColorMode, the OS in auto mode, or your own code) and with
-  // `dir="rtl"`. Canvas can't read CSS, so the values are resolved here and
-  // re-applied to every chart whenever <html data-bs-theme> or dir changes.
-  (() => {
-    'use strict';
-    const {Chart} = globalThis;
-    if (!Chart) {
-      return;
-    }
-
-    const root = document.documentElement;
-    const cssVar = (name, fallback = '') =>
-      getComputedStyle(root).getPropertyValue(name).trim() || fallback;
-
-    // "#0d6efd" (or "#06f") + 0.3 -> "rgba(13, 110, 253, 0.3)"; anything else is returned as is.
-    const alpha = (color, opacity) => {
-      let hex = String(color).trim().replace(/^#/, '');
-      if (!/^[\da-f]{3}([\da-f]{3})?$/i.test(hex)) {
-        return color;
-      }
-
-      if (hex.length === 3) {
-        hex = [...hex].map((c) => c + c).join('');
-      }
-
-      const [r, g, b] = [0, 2, 4].map((i) => Number.parseInt(hex.slice(i, i + 2), 16));
-      return `rgba(${r}, ${g}, ${b}, ${opacity})`;
+  <!--begin::OverlayScrollbars Configure-->
+  <script>
+    const SELECTOR_SIDEBAR_WRAPPER = '.sidebar-wrapper';
+    const Default = {
+      scrollbarTheme: 'os-theme-light',
+      scrollbarAutoHide: 'leave',
+      scrollbarClickScroll: true,
     };
-
-    // Scriptable backgroundColor for area charts: the line colour fading to transparent.
-    const areaFill =
-      (color, from = 0.35, to = 0) =>
-        (context) => {
-          const {ctx, chartArea} = context.chart;
-          if (!chartArea) {
-            return alpha(color, from);
-          }
-
-          const gradient = ctx.createLinearGradient(0, chartArea.top, 0, chartArea.bottom);
-          gradient.addColorStop(0, alpha(color, from));
-          gradient.addColorStop(1, alpha(color, to));
-          return gradient;
-        };
-
-    // The theme colours currently in Chart.defaults.
-    let applied = [];
-
-    const apply = () => {
-      const text = cssVar('--bs-secondary-color', '#6c757d');
-      const body = cssVar('--bs-body-color', '#212529');
-      const surface = cssVar('--bs-body-bg', '#fff');
-      const grid = `rgba(${cssVar('--bs-emphasis-color-rgb', '0, 0, 0')}, 0.08)`;
-      const rtl = root.getAttribute('dir') === 'rtl';
-      const d = Chart.defaults;
-      applied = [text, grid];
-
-      d.font.family = cssVar('--bs-body-font-family', d.font.family);
-      d.font.size = 12;
-      d.color = text;
-      d.borderColor = grid;
-      d.maintainAspectRatio = false;
-
-      d.scale.grid.color = grid;
-      d.scale.border.color = grid;
-      d.scale.ticks.padding = 8;
-      // Value axes float, category axes keep only their baseline.
-      d.set('scales.linear', {border: {display: false}});
-      d.set('scales.category', {grid: {display: false}});
-
-      d.elements.line.borderWidth = 2;
-      d.elements.point.radius = 0;
-      d.elements.point.hoverRadius = 5;
-      d.elements.point.hitRadius = 8;
-      d.elements.point.hoverBorderWidth = 2;
-      d.elements.point.borderColor = surface;
-      d.elements.bar.borderRadius = 4;
-      d.elements.arc.borderColor = surface;
-      d.elements.arc.borderWidth = 2;
-
-      const {legend, tooltip} = d.plugins;
-      legend.position = 'bottom';
-      legend.rtl = rtl;
-      Object.assign(legend.labels, {
-        color: body,
-        usePointStyle: true,
-        pointStyle: 'circle',
-        boxWidth: 8,
-        boxHeight: 8,
-        padding: 16,
-      });
-
-      Object.assign(tooltip, {
-        rtl,
-        backgroundColor: surface,
-        borderColor: cssVar('--bs-border-color', '#dee2e6'),
-        borderWidth: 1,
-        titleColor: cssVar('--bs-emphasis-color', '#000'),
-        bodyColor: body,
-        titleFont: {weight: '600'},
-        padding: 10,
-        cornerRadius: 6,
-        caretSize: 5,
-        boxPadding: 4,
-        usePointStyle: true,
-      });
-
-      // Line and bar charts share one tooltip per x value, like a dashboard should.
-      for (const type of ['line', 'bar']) {
-        Chart.overrides[type].interaction = {mode: 'index', intersect: false};
-      }
-    };
-
-    // Chart.js copies the scale defaults (tick, grid, border and title colours)
-    // into each chart's config when the chart is created, so new defaults alone
-    // never reach an existing chart's axes. Drop the copies that still hold the
-    // previous theme's colours; update() then copies the new ones in. Colours a
-    // chart set for itself are left alone.
-    const forgetThemeColors = (options, stale) => {
-      for (const [key, value] of Object.entries(options)) {
-        if (value && typeof value === 'object' && !Array.isArray(value)) {
-          forgetThemeColors(value, stale);
-        } else if (/color$/i.test(key) && stale.includes(value)) {
-          delete options[key];
-        }
-      }
-    };
-
-    const refresh = () => {
-      const stale = applied;
-      apply();
-      for (const chart of Object.values(Chart.instances)) {
-        forgetThemeColors(chart.config.options.scales || {}, stale);
-        chart.update('none');
-      }
-    };
-
-    apply();
-    new MutationObserver(refresh).observe(root, {
-      attributes: true,
-      attributeFilter: ['data-bs-theme', 'dir'],
-    });
-    // The web font may arrive after the first draw; redraw so labels use it.
-    document.fonts?.addEventListener('loadingdone', refresh);
-
-    // Helpers for the page's own chart code.
-    // eslint-disable-next-line unicorn/no-global-object-property-assignment
-    globalThis.lteChartTheme = {cssVar, alpha, areaFill, refresh};
-  })();
-</script>
-<!--end::Chart.js theme preset-->
-
-<script>
-  // NOTICE!! DO NOT USE ANY OF THIS JAVASCRIPT
-  // IT'S ALL JUST JUNK FOR DEMO
-  // ++++++++++++++++++++++++++++++++++++++++++
-
-  new Chart(document.querySelector('#visitors-chart'), {
-    type: 'line',
-    data: {
-      labels: ['22th', '23th', '24th', '25th', '26th', '27th', '28th'],
-      datasets: [
-        {
-          label: 'High - 2023',
-          data: [100, 120, 170, 167, 180, 177, 160],
-          borderColor: '#0d6efd',
-          backgroundColor: '#0d6efd',
-          pointRadius: 3,
-          tension: 0.4,
-        },
-        {
-          label: 'Low - 2023',
-          data: [60, 80, 70, 67, 80, 77, 100],
-          borderColor: '#adb5bd',
-          backgroundColor: '#adb5bd',
-          pointRadius: 3,
-          tension: 0.4,
-        },
-      ],
-    },
-    options: {
-      plugins: {
-        legend: {
-          display: false,
-        },
-      },
-    },
-  });
-
-  new Chart(document.querySelector('#sales-chart'), {
-    type: 'bar',
-    data: {
-      labels: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
-      datasets: [
-        {
-          label: 'Net Profit',
-          data: [44, 55, 57, 56, 61, 58, 63, 60, 66],
-          backgroundColor: '#0d6efd',
-        },
-        {
-          label: 'Revenue',
-          data: [76, 85, 101, 98, 87, 105, 91, 114, 94],
-          backgroundColor: '#20c997',
-        },
-        {
-          label: 'Free Cash Flow',
-          data: [35, 41, 36, 26, 45, 48, 52, 53, 41],
-          backgroundColor: '#ffc107',
-        },
-      ],
-    },
-    options: {
-      datasets: {
-        bar: {
-          categoryPercentage: 0.55,
-          barPercentage: 0.9,
-        },
-      },
-      plugins: {
-        legend: {
-          display: false,
-        },
-        tooltip: {
-          callbacks: {
-            label: (context) => ` ${context.dataset.label}: $ ${context.parsed.y} thousands`,
+    document.addEventListener('DOMContentLoaded', function () {
+      const sidebarWrapper = document.querySelector(SELECTOR_SIDEBAR_WRAPPER);
+      const isMobile = window.innerWidth <= 992;
+      if (
+        sidebarWrapper &&
+        globalThis.OverlayScrollbarsGlobal?.OverlayScrollbars !== undefined &&
+        !isMobile
+      ) {
+        OverlayScrollbarsGlobal.OverlayScrollbars(sidebarWrapper, {
+          scrollbars: {
+            theme: Default.scrollbarTheme,
+            autoHide: Default.scrollbarAutoHide,
+            clickScroll: Default.scrollbarClickScroll,
           },
-        },
-      },
-    },
-  });
-</script>
-<!--end::Script-->
+        });
+      }
+    });
+  </script>
+  <!--end::OverlayScrollbars Configure-->
+</body>
 <!--end::Body-->
 
 </html>
