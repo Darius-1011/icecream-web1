@@ -1,21 +1,21 @@
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
 
   /* Back to top button */
   var backToTop = document.querySelector('.back-to-top');
   if (backToTop) {
-    window.addEventListener('scroll', function () {
+    window.addEventListener('scroll', function() {
       backToTop.classList.toggle('show', window.scrollY > 400);
     });
-    backToTop.addEventListener('click', function () {
+    backToTop.addEventListener('click', function() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
 
   /* Quantity steppers */
-  document.querySelectorAll('.qty-stepper').forEach(function (stepper) {
+  document.querySelectorAll('.qty-stepper').forEach(function(stepper) {
     var input = stepper.querySelector('input');
-    stepper.querySelectorAll('.qty-btn').forEach(function (btn) {
-      btn.addEventListener('click', function () {
+    stepper.querySelectorAll('.qty-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
         var val = parseInt(input.value, 10) || 1;
         var min = parseInt(input.min, 10) || 1;
         if (btn.dataset.action === 'increase') {
@@ -29,11 +29,11 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   /* Product gallery thumbnail swap */
-  document.querySelectorAll('.pd-thumb-list img').forEach(function (thumb) {
-    thumb.addEventListener('click', function () {
+  document.querySelectorAll('.pd-thumb-list img').forEach(function(thumb) {
+    thumb.addEventListener('click', function() {
       var mainImg = document.querySelector('.pd-main-img img');
       if (!mainImg) return;
-      document.querySelectorAll('.pd-thumb-list img').forEach(function (t) { t.classList.remove('active'); });
+      document.querySelectorAll('.pd-thumb-list img').forEach(function(t) { t.classList.remove('active'); });
       thumb.classList.add('active');
       mainImg.setAttribute('src', thumb.getAttribute('src'));
     });
@@ -76,8 +76,8 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /* Bootstrap form validation styling (contact / checkout / auth forms) */
-  document.querySelectorAll('form.needs-validation').forEach(function (form) {
-    form.addEventListener('submit', function (e) {
+  document.querySelectorAll('form.needs-validation').forEach(function(form) {
+    form.addEventListener('submit', function(e) {
       e.preventDefault();
       e.stopPropagation();
       form.classList.add('was-validated');
@@ -85,3 +85,9 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
 });
+
+/* Format money */
+function formatMoney(input) {
+  let value = input.value.replace(/\D/, '');
+  input.value = value.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+}
