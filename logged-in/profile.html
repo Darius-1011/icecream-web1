@@ -119,11 +119,6 @@
                                 type="button" role="tab" aria-controls="tab-info" aria-selected="false">
                                 <i class="bi bi-person"></i> Thông tin cá nhân
                             </button>
-                            <button class="nav-link" id="tab-orders-btn" data-bs-toggle="pill"
-                                data-bs-target="#tab-orders" type="button" role="tab" aria-controls="tab-orders"
-                                aria-selected="false">
-                                <i class="bi bi-bag-check"></i> Đơn hàng của tôi
-                            </button>
                             <button class="nav-link" id="tab-address-btn" data-bs-toggle="pill"
                                 data-bs-target="#tab-address" type="button" role="tab" aria-controls="tab-address"
                                 aria-selected="false">
@@ -150,14 +145,14 @@
                             aria-labelledby="tab-overview-btn" tabindex="0">
                             <div class="profile-panel">
                                 <h4>Xin chào, Minh Anh!</h4>
-                                <p class="panel-subtitle">Đây là tổng quan hoạt động mua sắm của bạn tại Cà Lem.</p>
+                                <p class="panel-subtitle">Đây là tổng quan hoạt động mua sắm của bạn tại Icecream.</p>
 
                                 <div class="row g-3 mb-4">
                                     <div class="col-sm-4">
                                         <div class="stat-card">
                                             <span class="stat-icon"><i class="bi bi-bag-check"></i></span>
                                             <div>
-                                                <div class="stat-value">12</div>
+                                                <div class="stat-value">3</div>
                                                 <div class="stat-label">Đơn hàng</div>
                                             </div>
                                         </div>
@@ -166,7 +161,7 @@
                                         <div class="stat-card orange">
                                             <span class="stat-icon"><i class="bi bi-bookmark-heart"></i></span>
                                             <div>
-                                                <div class="stat-value">2</div>
+                                                <div class="stat-value">3</div>
                                                 <div class="stat-label">Sản phẩm yêu thích</div>
                                             </div>
                                         </div>
@@ -196,22 +191,22 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td><a href="#" class="product-title mb-0">#CL-1042</a></td>
+                                                <td><a href="#" class="product-title mb-0">#CL20261020</a></td>
                                                 <td>20/10/2026</td>
                                                 <td><span class="status-badge processing">Đang giao</span></td>
-                                                <td class="text-end">245.000 VND</td>
+                                                <td class="text-end">82.000 VND</td>
                                             </tr>
                                             <tr>
-                                                <td><a href="#" class="product-title mb-0">#CL-1038</a></td>
-                                                <td>14/10/2026</td>
+                                                <td><a href="#" class="product-title mb-0">#CL20261018</a></td>
+                                                <td>18/10/2026</td>
                                                 <td><span class="status-badge delivered">Đã giao</span></td>
-                                                <td class="text-end">180.000 VND</td>
+                                                <td class="text-end">30.000 VND</td>
                                             </tr>
                                             <tr>
-                                                <td><a href="#" class="product-title mb-0">#CL-1027</a></td>
-                                                <td>02/10/2026</td>
-                                                <td><span class="status-badge delivered">Đã giao</span></td>
-                                                <td class="text-end">320.000 VND</td>
+                                                <td><a href="#" class="product-title mb-0">#CL20261012</a></td>
+                                                <td>12/10/2026</td>
+                                                <td><span class="status-badge cancelled">Đã hủy</span></td>
+                                                <td class="text-end">20.000 VND</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -280,80 +275,6 @@
                                         <button class="btn btn-outline-dark-soft" type="reset">Hủy</button>
                                     </div>
                                 </form>
-                            </div>
-                        </div>
-
-                        <!-- Orders -->
-                        <div class="tab-pane fade" id="tab-orders" role="tabpanel" aria-labelledby="tab-orders-btn"
-                            tabindex="0">
-                            <div class="profile-panel">
-                                <h4>Đơn hàng của tôi</h4>
-                                <p class="panel-subtitle">Theo dõi trạng thái và lịch sử mua hàng của bạn.</p>
-
-                                <div class="table-responsive">
-                                    <table class="table table-wishlist align-middle mb-0">
-                                        <thead>
-                                            <tr>
-                                                <th>Mã đơn</th>
-                                                <th>Ngày đặt</th>
-                                                <th>Sản phẩm</th>
-                                                <th>Trạng thái</th>
-                                                <th class="text-end">Tổng tiền</th>
-                                                <th></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td><a href="#" class="product-title mb-0">#CL-1042</a></td>
-                                                <td>20/10/2026</td>
-                                                <td>3 sản phẩm</td>
-                                                <td><span class="status-badge processing">Đang giao</span></td>
-                                                <td class="text-end">245.000 VND</td>
-                                                <td class="text-end">
-                                                    <button class="cart-remove" aria-label="Xem chi tiết đơn hàng"
-                                                        title="Xem chi tiết"><i
-                                                            class="bi bi-chevron-right"></i></button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#" class="product-title mb-0">#CL-1038</a></td>
-                                                <td>14/10/2026</td>
-                                                <td>2 sản phẩm</td>
-                                                <td><span class="status-badge delivered">Đã giao</span></td>
-                                                <td class="text-end">180.000 VND</td>
-                                                <td class="text-end">
-                                                    <button class="cart-remove" aria-label="Xem chi tiết đơn hàng"
-                                                        title="Xem chi tiết"><i
-                                                            class="bi bi-chevron-right"></i></button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#" class="product-title mb-0">#CL-1027</a></td>
-                                                <td>02/10/2026</td>
-                                                <td>5 sản phẩm</td>
-                                                <td><span class="status-badge delivered">Đã giao</span></td>
-                                                <td class="text-end">320.000 VND</td>
-                                                <td class="text-end">
-                                                    <button class="cart-remove" aria-label="Xem chi tiết đơn hàng"
-                                                        title="Xem chi tiết"><i
-                                                            class="bi bi-chevron-right"></i></button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#" class="product-title mb-0">#CL-1019</a></td>
-                                                <td>25/09/2026</td>
-                                                <td>1 sản phẩm</td>
-                                                <td><span class="status-badge cancelled">Đã hủy</span></td>
-                                                <td class="text-end">65.000 VND</td>
-                                                <td class="text-end">
-                                                    <button class="cart-remove" aria-label="Xem chi tiết đơn hàng"
-                                                        title="Xem chi tiết"><i
-                                                            class="bi bi-chevron-right"></i></button>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
                             </div>
                         </div>
 

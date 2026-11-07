@@ -1736,18 +1736,18 @@ img {
 }
 
 .status-badge.processing {
-  background: #fff4e5;
-  color: #c96a00;
+  background: #eaf3ff;
+  color: #2766ae;
 }
 
 .status-badge.delivered {
-  background: var(--gc-green-light);
-  color: var(--gc-green);
+  background: #e9f7ee;
+  color: #27824b;
 }
 
 .status-badge.cancelled {
-  background: #fdecec;
-  color: #c53939;
+  background: #fff0ed;
+  color: #bd493b;
 }
 
 .address-card {
