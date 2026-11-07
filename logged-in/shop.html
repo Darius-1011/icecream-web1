@@ -132,18 +132,26 @@
 
                     <div class="widget">
                         <h5 class="widget-title">Lọc theo giá</h5>
-                        <input type="range" class="form-range" min="0" max="100" value="65" id="priceRange">
-                        <div class="price-range-values">
-                            <span>0 VND</span>
-                            <span>65.000 VND</span>
-                        </div>
-                        <br>
-                        <h7>Đến</h7>
-                        <input type="range" class="form-range" min="0" max="100" value="65" id="priceRange">
-                        <div class="price-range-values">
-                            <span>0 VND</span>
-                            <span>65.000 VND</span>
-                        </div>
+                        <form class="row g-3 checkout-form needs-validation" novalidate="">
+                            <div class="col-md-6">
+                                <label>Từ</label>
+                                <input
+                                    type="text"
+                                    class="form-control mb-0"
+                                    placeholder="5000"
+                                    oninput="formatMoney(this)"
+                                >
+                            </div>
+                            <div class="col-md-6">
+                                <label>Đến</label>
+                                <input
+                                    type="text"
+                                    class="form-control mb-0"
+                                    placeholder="65000"
+                                    oninput="formatMoney(this)"
+                                >
+                            </div>
+                        </form>
                     </div>
                 </aside>
 
