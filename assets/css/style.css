@@ -1924,3 +1924,7 @@ img {
     font-size: 1.6rem;
   }
 }
+
+#otherAddress {
+  display: none;
+}

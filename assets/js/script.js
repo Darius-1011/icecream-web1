@@ -91,3 +91,14 @@ function formatMoney(input) {
   let value = input.value.replace(/\D/, '');
   input.value = value.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
 }
+
+/* Display other address on selection */
+document.getElementById("addressType").addEventListener("change", (e) => {
+  const otherAddress = document.getElementById("otherAddress");
+
+  if (e.target.value === "other") {
+    otherAddress.style.display = "block";
+  } else {
+    otherAddress.style.display = "none";
+  }
+});

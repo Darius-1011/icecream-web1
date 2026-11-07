@@ -97,7 +97,6 @@
     <section class="section-py">
         <div class="container">
 
-            <div class="notice-box">Khách hàng quay lại? <a href="login.html">Nhấn vào đây để đăng nhập</a></div>
             <div class="notice-box">Có mã giảm giá? <a href="#" data-bs-toggle="collapse"
                     data-bs-target="#couponBox">Nhấn vào đây để nhập mã của bạn</a>
                 <div class="collapse mt-3" id="couponBox">
@@ -114,11 +113,11 @@
                     <form class="row needs-validation" novalidate>
                         <div class="col-md-6">
                             <label>Tên *</label>
-                            <input type="text" class="form-control" required>
+                            <input type="text" class="form-control" value="Minh Anh" required>
                         </div>
                         <div class="col-md-6">
                             <label>Họ *</label>
-                            <input type="text" class="form-control" required>
+                            <input type="text" class="form-control" value="Nguyễn" required>
                         </div>
                         <div class="col-12">
                             <label>Tên công ty (optional)</label>
@@ -135,8 +134,15 @@
                         </div>
                         <div class="col-12">
                             <label>Địa chỉ đường phố *</label>
-                            <input type="text" class="form-control mb-2" placeholder="Số nhà và tên đường" required>
-                            <input type="text" class="form-control" placeholder="Căn hộ, suite, v.v. (tùy chọn)">
+                            <select class="form-select" id="addressType" required>
+                                <option value="home" selected>Nhà riêng</option>
+                                <option value="office">Văn phòng</option>
+                                <option value="other">Địa chỉ khác</option>
+                            </select>
+                            <div id="otherAddress">
+                                <input type="text" class="form-control mb-2" placeholder="Số nhà và tên đường" required>
+                                <input type="text" class="form-control" placeholder="Căn hộ, suite, v.v. (tùy chọn)">
+                            </div>
                         </div>
                         <div class="col-md-6">
                             <label>Thị trấn / Thành phố *</label>
