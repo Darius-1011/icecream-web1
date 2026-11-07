@@ -11,11 +11,11 @@
 - [x] Hiển thị sản phẩm theo phân loại và kết quả tìm kiếm dạng phân trang
 - [x] Đăng ký làm người mua hàng (giao diện trên người dùng đầu cuối)
 - [x] Bán hàng phải có giỏ hàng: (tham khảo các web bán hàng trực tuyến)
-- [ ] Yêu cầu phải đăng nhập và tự hiển thị thông tin người đăng nhập
+- [x] Yêu cầu phải đăng nhập và tự hiển thị thông tin người đăng nhập
 - [ ] Cho phép chọn địa chỉ của tài khoản mua hoặc nhập địa chỉ mới.
 - [x] Cho phép chọn hình thức chi trả (Trực tuyến hoặc Tiền mặt – KHÔNG yêu cầu trang thanh toán)
 - [ ] Hiển thị và lưu đơn hàng khi kết thúc giao dịch
-- [ ] Cho phép xem lại lịch sử mua hàng của người mua (được nhóm theo đơn hàng).
+- [x] Cho phép xem lại lịch sử mua hàng của người mua (được nhóm theo đơn hàng).
 
 ### Admin
 
