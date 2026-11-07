@@ -14,7 +14,7 @@
 - [x] Yêu cầu phải đăng nhập và tự hiển thị thông tin người đăng nhập
 - [x] Cho phép chọn địa chỉ của tài khoản mua hoặc nhập địa chỉ mới.
 - [x] Cho phép chọn hình thức chi trả (Trực tuyến hoặc Tiền mặt – KHÔNG yêu cầu trang thanh toán)
-- [ ] Hiển thị và lưu đơn hàng khi kết thúc giao dịch
+- [x] Hiển thị và lưu đơn hàng khi kết thúc giao dịch
 - [x] Cho phép xem lại lịch sử mua hàng của người mua (được nhóm theo đơn hàng).
 
 ### Admin
