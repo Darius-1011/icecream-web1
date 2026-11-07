@@ -87,6 +87,8 @@
   <!--begin::Required Plugin(AdminLTE)-->
   <link rel="stylesheet" href="./css/adminlte.css" />
   <!--end::Required Plugin(AdminLTE)-->
+
+  <script defer src="./js/script.js"></script>
 </head>
 
 <body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
@@ -439,11 +441,19 @@
             <div class="col-md-4">
               <!-- About card -->
               <div class="card">
-                <div class="card-body text-center">
+                <div class="card-body text-center pb-0 mb-0">
                   <img
-                    class="img-fluid rounded-1 bg-primary-subtle text-primary d-inline-flex align-items-center justify-content-center mb-3"
-                    src="../assets/img/products/mochi.png" alt="Kem mochi">
-                  <div class="input-group mb-3">
+                    class="img-fluid rounded-1 bg-primary-subtle text-primary d-inline-flex align-items-center justify-content-center"
+                    src="../assets/img/products/dua.png" alt="Kem dua">
+                </div>
+                <div class="card-body text-lg-start">
+                  <img
+                    class="img-size-64 rounded-1 bg-primary-subtle text-primary d-inline-flex align-items-center justify-content-center mb-3"
+                    src="../assets/img/products/kem-dua-da-nang-3.jpg" alt="Kem dua">
+                  <img
+                    class="img-size-64 rounded-1 bg-primary-subtle text-primary d-inline-flex align-items-center justify-content-center mb-3"
+                    src="../assets/img/products/kem-dao-dua-4-200x300.jpg" alt="Kem dua">
+                  <div class="input-group mb-0">
                     <input type="file" class="form-control" id="inputGroupFile02" required="">
                   </div>
                 </div>
@@ -463,23 +473,16 @@
                       <form class="row g-3">
                         <div class="col-md-6">
                           <label class="form-label" for="profile-first"> Name </label>
-                          <input type="text" class="form-control" id="profile-first" value="Kem mochi" />
+                          <input type="text" class="form-control" id="profile-first" value="Kem dừa" />
                         </div>
                         <div class="col-md-6">
                           <label class="form-label" for="profile-last"> Price (VND) </label>
-                          <input type="text" class="form-control" id="profile-last" value="10000" />
+                          <input type="text" class="form-control" id="profile-last" value="20.000"
+                            oninput="formatMoney(this)" />
                         </div>
                         <div class="col-md-6">
-                          <label class="form-label" for="profile-email"> Volume (gram) </label>
-                          <input type="text" class="form-control" id="profile-email" value="300" />
-                        </div>
-                        <div class="col-md-6">
-                          <label class="form-label" for="profile-role"> Ingredients </label>
-                          <input type="text" class="form-control" id="profile-role" value="Mochi, kem, đường cát" />
-                        </div>
-                        <div class="col-md-6">
-                          <label class="form-label" for="profile-role"> Shelf Live </label>
-                          <input type="text" class="form-control" id="profile-role" value="Mochi, kem, đường cát" />
+                          <label class="form-label" for="profile-last"> Short Description </label>
+                          <textarea class="form-control" rows="3">Kem dừa thơm béo, kết hợp vị ngọt dịu của dừa và kết cấu kem mịn, mát lạnh.</textarea>
                         </div>
                         <div class="col-md-6">
                           <label class="form-label" for="profile-role"> Type </label>
@@ -492,6 +495,28 @@
                             <option>Bánh kem lạnh</option>
                             <option>Topping</option>
                           </select>
+                        </div>
+                        <div class="col-md-12">
+                          <label class="form-label" for="profile-last"> Long Description </label>
+                          <textarea class="form-control" rows="12">Kem dừa có hương vị thơm béo đặc trưng của dừa, kết hợp với vị ngọt dịu và kết cấu kem mềm mịn, mát lạnh. Đây là món tráng miệng phù hợp để thưởng thức vào những ngày nóng hoặc sau bữa ăn.
+
+- Được làm từ nước cốt dừa, mang đến hương vị béo thơm đặc trưng.
+- Kết cấu kem mịn, mềm và có vị ngọt dịu.
+- Có thể dùng kèm đậu phộng rang và dừa sấy để tăng độ giòn và hương vị.
+
+Mỗi muỗng kem là sự kết hợp giữa vị dừa thơm ngon, độ béo vừa phải và các loại topping hấp dẫn. Kem dừa thích hợp để thưởng thức cùng gia đình, bạn bè hoặc dùng như một món ăn nhẹ giải nhiệt.</textarea>
+                        </div>
+                        <div class="col-md-6">
+                          <label class="form-label" for="profile-email"> Volume (gram) </label>
+                          <input type="text" class="form-control" id="profile-email" value="500" oninput="formatMoney(this)"/>
+                        </div>
+                        <div class="col-md-6">
+                          <label class="form-label" for="profile-role"> Ingredients </label>
+                          <input type="text" class="form-control" id="profile-role" value="Nước cốt dừa, kem tươi, sữa đặc, dừa nạo" />
+                        </div>
+                        <div class="col-md-6">
+                          <label class="form-label" for="profile-role"> Shelf Live </label>
+                          <input type="text" class="form-control" id="profile-role" value="5-7 ngày" />
                         </div>
                         <div class="col-12">
                           <button type="submit" class="btn btn-primary">Save changes</button>
