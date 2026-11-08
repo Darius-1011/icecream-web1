@@ -103,14 +103,13 @@
 
         <!--begin::End Navbar Links-->
         <ul class="navbar-nav ms-auto">
-          <!--begin::Search (small screens)-->
+          <!--begin::Search (small screens: the field above is hidden, so link to the search page)-->
           <li class="nav-item d-xl-none">
             <a class="nav-link" href="./pages/search-results.html" aria-label="Search">
               <i class="bi bi-search" aria-hidden="true"></i>
             </a>
           </li>
           <!--end::Search-->
-
           <!--begin::Messages Dropdown Menu-->
           <li class="nav-item dropdown">
             <a class="nav-link" data-bs-toggle="dropdown" href="#" aria-label="Messages: 3 unread">
@@ -118,7 +117,7 @@
               <span class="navbar-badge badge text-bg-danger">3</span>
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
-              <a href="#" class="dropdown-item">
+              <a href="chat.html" class="dropdown-item">
                 <!--begin::Message-->
                 <div class="d-flex">
                   <div class="flex-shrink-0">
@@ -138,7 +137,7 @@
                 <!--end::Message-->
               </a>
               <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item">
+              <a href="chat.html" class="dropdown-item">
                 <!--begin::Message-->
                 <div class="d-flex">
                   <div class="flex-shrink-0">
@@ -160,7 +159,7 @@
                 <!--end::Message-->
               </a>
               <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item">
+              <a href="chat.html" class="dropdown-item">
                 <!--begin::Message-->
                 <div class="d-flex">
                   <div class="flex-shrink-0">
@@ -217,6 +216,8 @@
           <!--end::Notifications Dropdown Menu-->
 
           <!--begin::Language Menu-->
+          <!-- Markup only: swapping the locale is the application's job. The docs
+           Recipes page shows how to wire this to a real locale switch. -->
           <li class="nav-item dropdown">
             <a class="nav-link" href="#" id="language-menu" data-bs-toggle="dropdown" aria-expanded="false"
               aria-label="Change language, current language English">
@@ -246,44 +247,6 @@
           </li>
           <!--end::Fullscreen Toggle-->
 
-          <!--begin::Color Mode Toggle (#6010)-->
-          <li class="nav-item dropdown">
-            <a class="nav-link" href="#" id="bd-theme" aria-label="Toggle color scheme" data-bs-toggle="dropdown"
-              aria-expanded="false">
-              <i class="bi bi-sun-fill" data-lte-theme-icon="light"></i>
-              <i class="bi bi-moon-fill d-none" data-lte-theme-icon="dark"></i>
-              <i class="bi bi-circle-half d-none" data-lte-theme-icon="auto"></i>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme"
-              style="--bs-dropdown-min-width: 8rem">
-              <li>
-                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light"
-                  aria-pressed="false">
-                  <i class="bi bi-sun-fill me-2"></i>
-                  Light
-                  <i class="bi bi-check-lg ms-auto d-none"></i>
-                </button>
-              </li>
-              <li>
-                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark"
-                  aria-pressed="false">
-                  <i class="bi bi-moon-fill me-2"></i>
-                  Dark
-                  <i class="bi bi-check-lg ms-auto d-none"></i>
-                </button>
-              </li>
-              <li>
-                <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto"
-                  aria-pressed="true">
-                  <i class="bi bi-circle-half me-2"></i>
-                  Auto
-                  <i class="bi bi-check-lg ms-auto d-none"></i>
-                </button>
-              </li>
-            </ul>
-          </li>
-          <!--end::Color Mode Toggle-->
-
           <!--begin::User Menu Dropdown-->
           <li class="nav-item dropdown user-menu">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
@@ -303,17 +266,19 @@
               <!--end::User Image-->
               <!--begin::Menu Body-->
               <li class="user-body">
+                <!--begin::Row-->
                 <div class="row">
                   <div class="col-4 text-center">
                     <a href="./chat.html">Chat</a>
                   </div>
                   <div class="col-4 text-center">
-                    <a href="./calendar.html">Calendar</a>
+                    <a href="./profile.html">Profile</a>
                   </div>
                   <div class="col-4 text-center">
                     <a href="./settings.html">Settings</a>
                   </div>
                 </div>
+                <!--end::Row-->
               </li>
               <!--end::Menu Body-->
               <!--begin::Menu Footer-->
@@ -435,13 +400,16 @@
                   </summary>
                   <ul class="dropdown-menu dropdown-menu-end shadow">
                     <li>
-                      <a class="dropdown-item" href="#"><i class="bi bi-file-earmark-excel text-success me-2"></i>Xuất file Excel (.xlsx)</a>
+                      <a class="dropdown-item" href="#"><i class="bi bi-file-earmark-excel text-success me-2"></i>Xuất
+                        file Excel (.xlsx)</a>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#"><i class="bi bi-file-earmark-pdf text-danger me-2"></i>Xuất file PDF (.pdf)</a>
+                      <a class="dropdown-item" href="#"><i class="bi bi-file-earmark-pdf text-danger me-2"></i>Xuất file
+                        PDF (.pdf)</a>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#"><i class="bi bi-filetype-csv text-primary me-2"></i>Xuất file CSV (.csv)</a>
+                      <a class="dropdown-item" href="#"><i class="bi bi-filetype-csv text-primary me-2"></i>Xuất file
+                        CSV (.csv)</a>
                     </li>
                   </ul>
                 </details>
@@ -537,7 +505,8 @@
                                 <td>Kem Matcha (x20), Kem Chiên (x15)</td>
                                 <td class="text-end fw-semibold">6.200.000 ₫</td>
                                 <td class="text-center">
-                                  <a href="./orders.html?id=ORD-2026-089" class="btn btn-xs btn-outline-primary py-0 px-2">
+                                  <a href="./orders.html?id=ORD-2026-089"
+                                    class="btn btn-xs btn-outline-primary py-0 px-2">
                                     <i class="bi bi-eye me-1"></i>Xem chi tiết
                                   </a>
                                 </td>
@@ -548,7 +517,8 @@
                                 <td>Kem Gà Rán (x18), Kem Caramel (x12)</td>
                                 <td class="text-end fw-semibold">5.400.000 ₫</td>
                                 <td class="text-center">
-                                  <a href="./orders.html?id=ORD-2026-064" class="btn btn-xs btn-outline-primary py-0 px-2">
+                                  <a href="./orders.html?id=ORD-2026-064"
+                                    class="btn btn-xs btn-outline-primary py-0 px-2">
                                     <i class="bi bi-eye me-1"></i>Xem chi tiết
                                   </a>
                                 </td>
@@ -559,7 +529,8 @@
                                 <td>Combo Tiệc Kem Matcha & Caramel</td>
                                 <td class="text-end fw-semibold">3.800.000 ₫</td>
                                 <td class="text-center">
-                                  <a href="./orders.html?id=ORD-2026-019" class="btn btn-xs btn-outline-primary py-0 px-2">
+                                  <a href="./orders.html?id=ORD-2026-019"
+                                    class="btn btn-xs btn-outline-primary py-0 px-2">
                                     <i class="bi bi-eye me-1"></i>Xem chi tiết
                                   </a>
                                 </td>
@@ -584,8 +555,8 @@
                       </td>
                       <td>
                         <div class="d-flex align-items-center">
-                          <img src="./assets/img/user3-128x128.jpg" alt="Trần Thu Hà"
-                            class="rounded-circle me-3 border" style="width: 46px; height: 46px; object-fit: cover;" />
+                          <img src="./assets/img/user3-128x128.jpg" alt="Trần Thu Hà" class="rounded-circle me-3 border"
+                            style="width: 46px; height: 46px; object-fit: cover;" />
                           <div>
                             <div class="fw-bold text-body fs-6">Jeffery Einstein</div>
                             <div class="small text-secondary">Mã KH: #CUS-104 • 0912.345.678</div>
@@ -612,7 +583,8 @@
                                 <td>Kem Matcha Thượng Hạng (x25)</td>
                                 <td class="text-end fw-semibold">4.850.000 ₫</td>
                                 <td class="text-center">
-                                  <a href="./orders.html?id=ORD-2026-092" class="btn btn-xs btn-outline-primary py-0 px-2">
+                                  <a href="./orders.html?id=ORD-2026-092"
+                                    class="btn btn-xs btn-outline-primary py-0 px-2">
                                     <i class="bi bi-eye me-1"></i>Xem chi tiết
                                   </a>
                                 </td>
@@ -623,7 +595,8 @@
                                 <td>Kem Chiên Giòn (x20), Kem Gà Rán (x10)</td>
                                 <td class="text-end fw-semibold">4.200.000 ₫</td>
                                 <td class="text-center">
-                                  <a href="./orders.html?id=ORD-2026-051" class="btn btn-xs btn-outline-primary py-0 px-2">
+                                  <a href="./orders.html?id=ORD-2026-051"
+                                    class="btn btn-xs btn-outline-primary py-0 px-2">
                                     <i class="bi bi-eye me-1"></i>Xem chi tiết
                                   </a>
                                 </td>
@@ -634,7 +607,8 @@
                                 <td>Kem Caramel (x18)</td>
                                 <td class="text-end fw-semibold">3.100.000 ₫</td>
                                 <td class="text-center">
-                                  <a href="./orders.html?id=ORD-2026-022" class="btn btn-xs btn-outline-primary py-0 px-2">
+                                  <a href="./orders.html?id=ORD-2026-022"
+                                    class="btn btn-xs btn-outline-primary py-0 px-2">
                                     <i class="bi bi-eye me-1"></i>Xem chi tiết
                                   </a>
                                 </td>
@@ -659,8 +633,8 @@
                       </td>
                       <td>
                         <div class="d-flex align-items-center">
-                          <img src="./assets/img/user8-128x128.jpg" alt="Lê Quốc Bảo"
-                            class="rounded-circle me-3 border" style="width: 46px; height: 46px; object-fit: cover;" />
+                          <img src="./assets/img/user8-128x128.jpg" alt="Lê Quốc Bảo" class="rounded-circle me-3 border"
+                            style="width: 46px; height: 46px; object-fit: cover;" />
                           <div>
                             <div class="fw-bold text-body fs-6">King Von</div>
                             <div class="small text-secondary">Mã KH: #CUS-108 • 0987.654.321</div>
@@ -687,7 +661,8 @@
                                 <td>Kem Gà Rán Đặc Biệt (x22)</td>
                                 <td class="text-end fw-semibold">5.100.000 ₫</td>
                                 <td class="text-center">
-                                  <a href="./orders.html?id=ORD-2026-081" class="btn btn-xs btn-outline-primary py-0 px-2">
+                                  <a href="./orders.html?id=ORD-2026-081"
+                                    class="btn btn-xs btn-outline-primary py-0 px-2">
                                     <i class="bi bi-eye me-1"></i>Xem chi tiết
                                   </a>
                                 </td>
@@ -698,7 +673,8 @@
                                 <td>Kem Matcha (x15), Kem Caramel (x10)</td>
                                 <td class="text-end fw-semibold">3.800.000 ₫</td>
                                 <td class="text-center">
-                                  <a href="./orders.html?id=ORD-2026-045" class="btn btn-xs btn-outline-primary py-0 px-2">
+                                  <a href="./orders.html?id=ORD-2026-045"
+                                    class="btn btn-xs btn-outline-primary py-0 px-2">
                                     <i class="bi bi-eye me-1"></i>Xem chi tiết
                                   </a>
                                 </td>
@@ -751,7 +727,8 @@
                                 <td>Kem Chiên (x16), Kem Matcha (x10)</td>
                                 <td class="text-end fw-semibold">3.950.000 ₫</td>
                                 <td class="text-center">
-                                  <a href="./orders.html?id=ORD-2026-077" class="btn btn-xs btn-outline-primary py-0 px-2">
+                                  <a href="./orders.html?id=ORD-2026-077"
+                                    class="btn btn-xs btn-outline-primary py-0 px-2">
                                     <i class="bi bi-eye me-1"></i>Xem chi tiết
                                   </a>
                                 </td>
@@ -762,7 +739,8 @@
                                 <td>Combo Quà Tặng Kem Caramel (x12)</td>
                                 <td class="text-end fw-semibold">2.850.000 ₫</td>
                                 <td class="text-center">
-                                  <a href="./orders.html?id=ORD-2026-031" class="btn btn-xs btn-outline-primary py-0 px-2">
+                                  <a href="./orders.html?id=ORD-2026-031"
+                                    class="btn btn-xs btn-outline-primary py-0 px-2">
                                     <i class="bi bi-eye me-1"></i>Xem chi tiết
                                   </a>
                                 </td>
@@ -815,7 +793,8 @@
                                 <td>Kem Matcha (x12), Kem Gà Rán (x8)</td>
                                 <td class="text-end fw-semibold">3.200.000 ₫</td>
                                 <td class="text-center">
-                                  <a href="./orders.html?id=ORD-2026-070" class="btn btn-xs btn-outline-primary py-0 px-2">
+                                  <a href="./orders.html?id=ORD-2026-070"
+                                    class="btn btn-xs btn-outline-primary py-0 px-2">
                                     <i class="bi bi-eye me-1"></i>Xem chi tiết
                                   </a>
                                 </td>
@@ -826,7 +805,8 @@
                                 <td>Kem Chiên (x10), Kem Caramel (x6)</td>
                                 <td class="text-end fw-semibold">2.300.000 ₫</td>
                                 <td class="text-center">
-                                  <a href="./orders.html?id=ORD-2026-014" class="btn btn-xs btn-outline-primary py-0 px-2">
+                                  <a href="./orders.html?id=ORD-2026-014"
+                                    class="btn btn-xs btn-outline-primary py-0 px-2">
                                     <i class="bi bi-eye me-1"></i>Xem chi tiết
                                   </a>
                                 </td>
@@ -871,7 +851,8 @@
                   <span class="info-box-text text-secondary">Tổng doanh thu</span>
                   <span class="info-box-number fs-5 fw-bold text-body">485.200.000 ₫</span>
                   <small class="text-success fw-semibold">
-                    <i class="bi bi-arrow-up-right"></i> +18.4% <span class="text-secondary fw-normal">so với tháng trước</span>
+                    <i class="bi bi-arrow-up-right"></i> +18.4% <span class="text-secondary fw-normal">so với tháng
+                      trước</span>
                   </small>
                 </div>
               </div>
@@ -886,7 +867,8 @@
                   <span class="info-box-text text-secondary">Tổng đơn hàng</span>
                   <span class="info-box-number fs-5 fw-bold text-body">1,842</span>
                   <small class="text-success fw-semibold">
-                    <i class="bi bi-arrow-up-right"></i> +12.1% <span class="text-secondary fw-normal">so với tháng trước</span>
+                    <i class="bi bi-arrow-up-right"></i> +12.1% <span class="text-secondary fw-normal">so với tháng
+                      trước</span>
                   </small>
                 </div>
               </div>
@@ -901,7 +883,8 @@
                   <span class="info-box-text text-secondary">Khách hàng mới</span>
                   <span class="info-box-number fs-5 fw-bold text-body">428</span>
                   <small class="text-success fw-semibold">
-                    <i class="bi bi-arrow-up-right"></i> +8.5% <span class="text-secondary fw-normal">so với tháng trước</span>
+                    <i class="bi bi-arrow-up-right"></i> +8.5% <span class="text-secondary fw-normal">so với tháng
+                      trước</span>
                   </small>
                 </div>
               </div>
@@ -916,7 +899,8 @@
                   <span class="info-box-text text-secondary">Tỷ lệ chuyển đổi</span>
                   <span class="info-box-number fs-5 fw-bold text-body">4.65%</span>
                   <small class="text-danger fw-semibold">
-                    <i class="bi bi-arrow-down-right"></i> -0.4% <span class="text-secondary fw-normal">so với tháng trước</span>
+                    <i class="bi bi-arrow-down-right"></i> -0.4% <span class="text-secondary fw-normal">so với tháng
+                      trước</span>
                   </small>
                 </div>
               </div>
@@ -971,8 +955,10 @@
                       <div class="chart-col-group" style="--bar-h: 42.2%;">
                         <div class="css-tooltip">
                           <div class="css-tooltip-title">Tháng 1 / 2026</div>
-                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>280 Triệu ₫</strong></div>
-                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>175 Triệu ₫</strong></div>
+                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>280 Triệu
+                              ₫</strong></div>
+                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>175 Triệu
+                              ₫</strong></div>
                         </div>
                         <div class="chart-bar" style="height: 42.2%;"></div>
                         <span class="x-axis-label">Thg 1</span>
@@ -981,8 +967,10 @@
                       <div class="chart-col-group" style="--bar-h: 48.9%;">
                         <div class="css-tooltip">
                           <div class="css-tooltip-title">Tháng 2 / 2026</div>
-                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>310 Triệu ₫</strong></div>
-                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>195 Triệu ₫</strong></div>
+                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>310 Triệu
+                              ₫</strong></div>
+                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>195 Triệu
+                              ₫</strong></div>
                         </div>
                         <div class="chart-bar" style="height: 48.9%;"></div>
                         <span class="x-axis-label">Thg 2</span>
@@ -991,8 +979,10 @@
                       <div class="chart-col-group" style="--bar-h: 45.6%;">
                         <div class="css-tooltip">
                           <div class="css-tooltip-title">Tháng 3 / 2026</div>
-                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>295 Triệu ₫</strong></div>
-                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>180 Triệu ₫</strong></div>
+                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>295 Triệu
+                              ₫</strong></div>
+                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>180 Triệu
+                              ₫</strong></div>
                         </div>
                         <div class="chart-bar" style="height: 45.6%;"></div>
                         <span class="x-axis-label">Thg 3</span>
@@ -1001,8 +991,10 @@
                       <div class="chart-col-group" style="--bar-h: 55.6%;">
                         <div class="css-tooltip">
                           <div class="css-tooltip-title">Tháng 4 / 2026</div>
-                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>340 Triệu ₫</strong></div>
-                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>215 Triệu ₫</strong></div>
+                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>340 Triệu
+                              ₫</strong></div>
+                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>215 Triệu
+                              ₫</strong></div>
                         </div>
                         <div class="chart-bar" style="height: 55.6%;"></div>
                         <span class="x-axis-label">Thg 4</span>
@@ -1011,8 +1003,10 @@
                       <div class="chart-col-group" style="--bar-h: 60.0%;">
                         <div class="css-tooltip">
                           <div class="css-tooltip-title">Tháng 5 / 2026</div>
-                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>360 Triệu ₫</strong></div>
-                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>230 Triệu ₫</strong></div>
+                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>360 Triệu
+                              ₫</strong></div>
+                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>230 Triệu
+                              ₫</strong></div>
                         </div>
                         <div class="chart-bar" style="height: 60.0%;"></div>
                         <span class="x-axis-label">Thg 5</span>
@@ -1021,8 +1015,10 @@
                       <div class="chart-col-group" style="--bar-h: 53.3%;">
                         <div class="css-tooltip">
                           <div class="css-tooltip-title">Tháng 6 / 2026</div>
-                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>330 Triệu ₫</strong></div>
-                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>210 Triệu ₫</strong></div>
+                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>330 Triệu
+                              ₫</strong></div>
+                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>210 Triệu
+                              ₫</strong></div>
                         </div>
                         <div class="chart-bar" style="height: 53.3%;"></div>
                         <span class="x-axis-label">Thg 6</span>
@@ -1031,8 +1027,10 @@
                       <div class="chart-col-group" style="--bar-h: 50.0%;">
                         <div class="css-tooltip">
                           <div class="css-tooltip-title">Tháng 7 / 2026</div>
-                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>315 Triệu ₫</strong></div>
-                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>192 Triệu ₫</strong></div>
+                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>315 Triệu
+                              ₫</strong></div>
+                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>192 Triệu
+                              ₫</strong></div>
                         </div>
                         <div class="chart-bar" style="height: 50.0%;"></div>
                         <span class="x-axis-label">Thg 7</span>
@@ -1041,8 +1039,10 @@
                       <div class="chart-col-group" style="--bar-h: 64.9%;">
                         <div class="css-tooltip">
                           <div class="css-tooltip-title">Tháng 8 / 2026</div>
-                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>382 Triệu ₫</strong></div>
-                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>241 Triệu ₫</strong></div>
+                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>382 Triệu
+                              ₫</strong></div>
+                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>241 Triệu
+                              ₫</strong></div>
                         </div>
                         <div class="chart-bar" style="height: 64.9%;"></div>
                         <span class="x-axis-label">Thg 8</span>
@@ -1051,8 +1051,10 @@
                       <div class="chart-col-group" style="--bar-h: 71.1%;">
                         <div class="css-tooltip">
                           <div class="css-tooltip-title">Tháng 9 / 2026</div>
-                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>410 Triệu ₫</strong></div>
-                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>264 Triệu ₫</strong></div>
+                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>410 Triệu
+                              ₫</strong></div>
+                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>264 Triệu
+                              ₫</strong></div>
                         </div>
                         <div class="chart-bar" style="height: 71.1%;"></div>
                         <span class="x-axis-label">Thg 9</span>
@@ -1061,8 +1063,10 @@
                       <div class="chart-col-group" style="--bar-h: 87.8%;">
                         <div class="css-tooltip">
                           <div class="css-tooltip-title">Tháng 10 / 2026</div>
-                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>485 Triệu ₫</strong></div>
-                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>322 Triệu ₫</strong></div>
+                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>485 Triệu
+                              ₫</strong></div>
+                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>322 Triệu
+                              ₫</strong></div>
                         </div>
                         <div class="chart-bar" style="height: 87.8%;"></div>
                         <span class="x-axis-label">Thg 10</span>
