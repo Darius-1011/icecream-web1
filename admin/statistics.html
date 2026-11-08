@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="vi" data-bs-theme="dark">
+<html lang="vi">
 <!--begin::Head-->
 
 <head>
@@ -53,6 +53,11 @@
     integrity="sha256-5UwXtC6TaPHCAbVQ59waEAqOssHyhn/twyuLRRWszzo=" crossorigin="anonymous" media="print"
     onload="this.media = 'all'" />
   <!--end::Fonts-->
+
+  <!--begin::Third Party Plugin(OverlayScrollbars)-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.16.0/styles/overlayscrollbars.min.css"
+    crossorigin="anonymous" />
+  <!--end::Third Party Plugin(OverlayScrollbars)-->
 
   <!--begin::Third Party Plugin(Bootstrap Icons)-->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
@@ -296,15 +301,20 @@
       <!--end::Container-->
     </nav>
     <!--end::Header-->
-
     <!--begin::Sidebar-->
     <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
       <!--begin::Sidebar Brand-->
       <div class="sidebar-brand">
+        <!--begin::Brand Link-->
         <a href="./index.html" class="brand-link">
+          <!--begin::Brand Image-->
           <img src="./assets/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image opacity-75 shadow" />
+          <!--end::Brand Image-->
+          <!--begin::Brand Text-->
           <span class="brand-text fw-light">Icecream ADMIN</span>
+          <!--end::Brand Text-->
         </a>
+        <!--end::Brand Link-->
       </div>
       <!--end::Sidebar Brand-->
       <!--begin::Sidebar Search-->
@@ -353,7 +363,6 @@
       <!--end::Sidebar Wrapper-->
     </aside>
     <!--end::Sidebar-->
-
     <!--begin::App Main-->
     <main class="app-main">
       <!--begin::App Content Header-->
@@ -361,13 +370,13 @@
         <div class="container-fluid">
           <div class="row align-items-center">
             <div class="col-sm-6">
-              <h1 class="mb-0 fs-3 fw-bold text-body">Thống kê & Phân tích dữ liệu</h1>
+              <h1 class="mb-0 fs-3 fw-bold text-body">Statistics & Analytics</h1>
             </div>
             <div class="col-sm-6">
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb float-sm-end mb-0">
-                  <li class="breadcrumb-item"><a href="./index.html">Trang chủ</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Thống kê</li>
+                  <li class="breadcrumb-item"><a href="./index.html">Home</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Statistics</li>
                 </ol>
               </nav>
             </div>
@@ -386,30 +395,27 @@
           <div class="card filter-card mb-4 shadow-sm">
             <div class="card-header border-bottom d-flex flex-wrap justify-content-between align-items-center gap-2">
               <h3 class="card-title fw-bold mb-0 text-body">
-                <i class="bi bi-calendar-range me-2 text-primary"></i>Thống kê Top 5 khách hàng mua hàng cao nhất
+                <i class="bi bi-calendar-range me-2 text-primary"></i>Top 5 Customers by Spending
               </h3>
               <div class="d-flex flex-wrap gap-2 align-items-center">
                 <div class="btn-group" role="group" aria-label="Chọn nhanh thời gian">
-                  <button type="button" class="btn btn-outline-secondary btn-sm">7 ngày qua</button>
-                  <button type="button" class="btn btn-outline-secondary btn-sm">30 ngày qua</button>
-                  <button type="button" class="btn btn-primary btn-sm">Quý này</button>
+                  <button type="button" class="btn btn-outline-secondary btn-sm">Last 7 days</button>
+                  <button type="button" class="btn btn-outline-secondary btn-sm">Last 30 days</button>
+                  <button type="button" class="btn btn-primary btn-sm">This quater</button>
                 </div>
                 <details class="css-dropdown">
                   <summary class="btn btn-success btn-sm dropdown-toggle">
-                    <i class="bi bi-download me-1"></i> Xuất báo cáo
+                    <i class="bi bi-download me-1"></i> Export Report
                   </summary>
                   <ul class="dropdown-menu dropdown-menu-end shadow">
                     <li>
-                      <a class="dropdown-item" href="#"><i class="bi bi-file-earmark-excel text-success me-2"></i>Xuất
-                        file Excel (.xlsx)</a>
+                      <a class="dropdown-item" href="#"><i class="bi bi-file-earmark-excel text-success me-2"></i>Export Excel (.xlsx)</a>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#"><i class="bi bi-file-earmark-pdf text-danger me-2"></i>Xuất file
-                        PDF (.pdf)</a>
+                      <a class="dropdown-item" href="#"><i class="bi bi-file-earmark-pdf text-danger me-2"></i>Export PDF (.pdf)</a>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#"><i class="bi bi-filetype-csv text-primary me-2"></i>Xuất file
-                        CSV (.csv)</a>
+                      <a class="dropdown-item" href="#"><i class="bi bi-filetype-csv text-primary me-2"></i>Export CSV (.csv)</a>
                     </li>
                   </ul>
                 </details>
@@ -421,21 +427,21 @@
               <form action="#" method="get" class="row g-3 align-items-end mb-4 p-3 rounded bg-body-tertiary border">
                 <div class="col-12 col-md-4">
                   <label for="startDate" class="form-label fw-semibold text-body mb-1">
-                    <i class="bi bi-calendar-event me-1 text-primary"></i>Từ ngày:
+                    <i class="bi bi-calendar-event me-1 text-primary"></i>From:
                   </label>
                   <input type="date" id="startDate" name="startDate" class="form-control text-body bg-body"
                     value="2026-08-01" />
                 </div>
                 <div class="col-12 col-md-4">
                   <label for="endDate" class="form-label fw-semibold text-body mb-1">
-                    <i class="bi bi-calendar-check me-1 text-primary"></i>Đến ngày:
+                    <i class="bi bi-calendar-check me-1 text-primary"></i>To:
                   </label>
                   <input type="date" id="endDate" name="endDate" class="form-control text-body bg-body"
                     value="2026-10-31" />
                 </div>
                 <div class="col-12 col-md-4 d-flex gap-2">
                   <button type="button" class="btn btn-primary fw-semibold flex-grow-1">
-                    <i class="bi bi-funnel-fill me-1"></i> Thống kê dữ liệu
+                    <i class="bi bi-funnel-fill me-1"></i> Apply Filter
                   </button>
                   <button type="reset" class="btn btn-outline-secondary" title="Đặt lại mặc định">
                     <i class="bi bi-arrow-counterclockwise"></i>
@@ -446,12 +452,11 @@
               <!-- Thông tin tóm tắt khoảng thời gian đang xem -->
               <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">
                 <div class="text-body">
-                  <span class="fw-semibold">Khoảng thời gian thống kê:</span>
+                  <span class="fw-semibold">Reporting Period:</span>
                   <span class="badge text-bg-primary ms-1 fs-6">01/08/2026 - 31/10/2026</span>
-                  <span class="text-secondary ms-2 small">(Dữ liệu được sắp xếp giảm dần theo tổng tiền mua)</span>
                 </div>
                 <div class="text-body fw-bold fs-6">
-                  Tổng doanh thu Top 5: <span class="text-success fs-5">48.750.000 ₫</span>
+                  Top 5 Total Revenue: <span class="text-success fs-5">48.750.000 VND</span>
                 </div>
               </div>
 
@@ -460,12 +465,12 @@
                 <table class="table table-bordered align-middle mb-0" id="topCustomersTable">
                   <thead>
                     <tr>
-                      <th class="text-center" style="width: 70px;">Hạng</th>
-                      <th style="min-width: 220px;">Khách hàng</th>
-                      <th style="min-width: 440px;">Danh sách đơn hàng trong kỳ (Kèm link xem chi tiết)</th>
-                      <th class="text-center" style="width: 110px;">Số đơn</th>
+                      <th class="text-center" style="width: 70px;">Rank</th>
+                      <th style="min-width: 220px;">Customer Name</th>
+                      <th style="min-width: 440px;">Order in Period (Click to view details)</th>
+                      <th class="text-center" style="width: 110px;">Order count</th>
                       <th class="text-end" style="width: 180px;">
-                        Tổng tiền mua <i class="bi bi-sort-numeric-down-alt text-primary ms-1"></i>
+                        Total Spent <i class="bi bi-sort-numeric-down-alt text-primary ms-1"></i>
                       </th>
                     </tr>
                   </thead>
@@ -481,8 +486,8 @@
                             class="rounded-circle me-3 border" style="width: 46px; height: 46px; object-fit: cover;" />
                           <div>
                             <div class="fw-bold text-body fs-6">Charlie Kert</div>
-                            <div class="small text-secondary">Mã KH: #CUS-101 • 0901.234.567</div>
-                            <span class="badge text-bg-warning mt-1">Hạng Kim Cương</span>
+                            <div class="small text-secondary">CID: #CUS-101 • 0901.234.567</div>
+                            <span class="badge text-bg-warning mt-1">SSR</span>
                           </div>
                         </div>
                       </td>
@@ -491,47 +496,44 @@
                           <table class="table table-sm table-hover mb-0">
                             <thead>
                               <tr>
-                                <th>Mã đơn</th>
-                                <th>Ngày đặt</th>
-                                <th>Sản phẩm tiêu biểu</th>
-                                <th class="text-end">Thành tiền</th>
-                                <th class="text-center">Chi tiết</th>
+                                <th>Order ID</th>
+                                <th>Order Date</th>
+                                <th>Items</th>
+                                <th class="text-end">Total</th>
+                                <th class="text-center">Details</th>
                               </tr>
                             </thead>
                             <tbody>
                               <tr>
-                                <td class="fw-semibold text-primary">#ORD-2026-089</td>
+                                <td class="fw-semibold text-primary">#LT2026089</td>
                                 <td>24/10/2026</td>
                                 <td>Kem Matcha (x20), Kem Chiên (x15)</td>
-                                <td class="text-end fw-semibold">6.200.000 ₫</td>
+                                <td class="text-end fw-semibold">6.200.000 VND</td>
                                 <td class="text-center">
-                                  <a href="./orders.html?id=ORD-2026-089"
-                                    class="btn btn-xs btn-outline-primary py-0 px-2">
-                                    <i class="bi bi-eye me-1"></i>Xem chi tiết
+                                  <a href="./orders.html" class="btn btn-xs btn-outline-primary py-0 px-2">
+                                    <i class="bi bi-eye"></i>
                                   </a>
                                 </td>
                               </tr>
                               <tr>
-                                <td class="fw-semibold text-primary">#ORD-2026-064</td>
+                                <td class="fw-semibold text-primary">#OT2026064</td>
                                 <td>28/09/2026</td>
                                 <td>Kem Gà Rán (x18), Kem Caramel (x12)</td>
-                                <td class="text-end fw-semibold">5.400.000 ₫</td>
+                                <td class="text-end fw-semibold">5.400.000 VND</td>
                                 <td class="text-center">
-                                  <a href="./orders.html?id=ORD-2026-064"
-                                    class="btn btn-xs btn-outline-primary py-0 px-2">
-                                    <i class="bi bi-eye me-1"></i>Xem chi tiết
+                                  <a href="./orders.html" class="btn btn-xs btn-outline-primary py-0 px-2">
+                                    <i class="bi bi-eye"></i>
                                   </a>
                                 </td>
                               </tr>
                               <tr>
-                                <td class="fw-semibold text-primary">#ORD-2026-019</td>
+                                <td class="fw-semibold text-primary">#VF2026019</td>
                                 <td>15/08/2026</td>
-                                <td>Combo Tiệc Kem Matcha & Caramel</td>
-                                <td class="text-end fw-semibold">3.800.000 ₫</td>
+                                <td>Kem Vanilla</td>
+                                <td class="text-end fw-semibold">3.800.000 VND</td>
                                 <td class="text-center">
-                                  <a href="./orders.html?id=ORD-2026-019"
-                                    class="btn btn-xs btn-outline-primary py-0 px-2">
-                                    <i class="bi bi-eye me-1"></i>Xem chi tiết
+                                  <a href="./orders.html" class="btn btn-xs btn-outline-primary py-0 px-2">
+                                    <i class="bi bi-eye"></i>
                                   </a>
                                 </td>
                               </tr>
@@ -540,11 +542,11 @@
                         </div>
                       </td>
                       <td class="text-center">
-                        <span class="badge text-bg-primary fs-6">3 đơn</span>
+                        <span class="badge text-bg-primary fs-6">3 orders</span>
                       </td>
                       <td class="text-end">
-                        <div class="fs-5 fw-bold text-success">15.400.000 ₫</div>
-                        <small class="text-secondary">Chiếm 31.6% Top 5</small>
+                        <div class="fs-5 fw-bold text-success">15.400.000 VND</div>
+                        <small class="text-secondary"> 31.6% Top 5</small>
                       </td>
                     </tr>
 
@@ -559,8 +561,8 @@
                             style="width: 46px; height: 46px; object-fit: cover;" />
                           <div>
                             <div class="fw-bold text-body fs-6">Jeffery Einstein</div>
-                            <div class="small text-secondary">Mã KH: #CUS-104 • 0912.345.678</div>
-                            <span class="badge text-bg-warning mt-1">Hạng Kim Cương</span>
+                            <div class="small text-secondary">CID: #CUS-104 • 0912.345.678</div>
+                            <span class="badge text-bg-warning mt-1">SSR</span>
                           </div>
                         </div>
                       </td>
@@ -569,47 +571,44 @@
                           <table class="table table-sm table-hover mb-0">
                             <thead>
                               <tr>
-                                <th>Mã đơn</th>
-                                <th>Ngày đặt</th>
-                                <th>Sản phẩm tiêu biểu</th>
-                                <th class="text-end">Thành tiền</th>
-                                <th class="text-center">Chi tiết</th>
+                                <th>Order ID</th>
+                                <th>Order Date</th>
+                                <th>Items</th>
+                                <th class="text-end">Total</th>
+                                <th class="text-center">Details</th>
                               </tr>
                             </thead>
                             <tbody>
                               <tr>
-                                <td class="fw-semibold text-primary">#ORD-2026-092</td>
+                                <td class="fw-semibold text-primary">#FZ2026092</td>
                                 <td>26/10/2026</td>
-                                <td>Kem Matcha Thượng Hạng (x25)</td>
-                                <td class="text-end fw-semibold">4.850.000 ₫</td>
+                                <td>Kem Matcha (x25)</td>
+                                <td class="text-end fw-semibold">4.850.000 VND</td>
                                 <td class="text-center">
-                                  <a href="./orders.html?id=ORD-2026-092"
-                                    class="btn btn-xs btn-outline-primary py-0 px-2">
-                                    <i class="bi bi-eye me-1"></i>Xem chi tiết
+                                  <a href="./orders.html" class="btn btn-xs btn-outline-primary py-0 px-2">
+                                    <i class="bi bi-eye"></i>
                                   </a>
                                 </td>
                               </tr>
                               <tr>
-                                <td class="fw-semibold text-primary">#ORD-2026-051</td>
+                                <td class="fw-semibold text-primary">#LT2026051</td>
                                 <td>19/09/2026</td>
-                                <td>Kem Chiên Giòn (x20), Kem Gà Rán (x10)</td>
-                                <td class="text-end fw-semibold">4.200.000 ₫</td>
+                                <td>Kem Chiên (x20), Kem Gà Rán (x10)</td>
+                                <td class="text-end fw-semibold">4.200.000 VND</td>
                                 <td class="text-center">
-                                  <a href="./orders.html?id=ORD-2026-051"
-                                    class="btn btn-xs btn-outline-primary py-0 px-2">
-                                    <i class="bi bi-eye me-1"></i>Xem chi tiết
+                                  <a href="./orders.html" class="btn btn-xs btn-outline-primary py-0 px-2">
+                                    <i class="bi bi-eye"></i>
                                   </a>
                                 </td>
                               </tr>
                               <tr>
-                                <td class="fw-semibold text-primary">#ORD-2026-022</td>
+                                <td class="fw-semibold text-primary">#OT2026022</td>
                                 <td>20/08/2026</td>
                                 <td>Kem Caramel (x18)</td>
-                                <td class="text-end fw-semibold">3.100.000 ₫</td>
+                                <td class="text-end fw-semibold">3.100.000 VND</td>
                                 <td class="text-center">
-                                  <a href="./orders.html?id=ORD-2026-022"
-                                    class="btn btn-xs btn-outline-primary py-0 px-2">
-                                    <i class="bi bi-eye me-1"></i>Xem chi tiết
+                                  <a href="./orders.html" class="btn btn-xs btn-outline-primary py-0 px-2">
+                                    <i class="bi bi-eye"></i>
                                   </a>
                                 </td>
                               </tr>
@@ -618,11 +617,11 @@
                         </div>
                       </td>
                       <td class="text-center">
-                        <span class="badge text-bg-primary fs-6">3 đơn</span>
+                        <span class="badge text-bg-primary fs-6">3 orders</span>
                       </td>
                       <td class="text-end">
-                        <div class="fs-5 fw-bold text-success">12.150.000 ₫</div>
-                        <small class="text-secondary">Chiếm 24.9% Top 5</small>
+                        <div class="fs-5 fw-bold text-success">12.150.000 VND</div>
+                        <small class="text-secondary"> 24.9% Top 5</small>
                       </td>
                     </tr>
 
@@ -637,8 +636,8 @@
                             style="width: 46px; height: 46px; object-fit: cover;" />
                           <div>
                             <div class="fw-bold text-body fs-6">King Von</div>
-                            <div class="small text-secondary">Mã KH: #CUS-108 • 0987.654.321</div>
-                            <span class="badge text-bg-info mt-1">Hạng Vàng</span>
+                            <div class="small text-secondary">CID: #CUS-108 • 0987.654.321</div>
+                            <span class="badge text-bg-info mt-1">SR</span>
                           </div>
                         </div>
                       </td>
@@ -647,35 +646,33 @@
                           <table class="table table-sm table-hover mb-0">
                             <thead>
                               <tr>
-                                <th>Mã đơn</th>
-                                <th>Ngày đặt</th>
-                                <th>Sản phẩm tiêu biểu</th>
-                                <th class="text-end">Thành tiền</th>
-                                <th class="text-center">Chi tiết</th>
+                                <th>Order ID</th>
+                                <th>Order Date</th>
+                                <th>Items</th>
+                                <th class="text-end">Total</th>
+                                <th class="text-center">Details</th>
                               </tr>
                             </thead>
                             <tbody>
                               <tr>
-                                <td class="fw-semibold text-primary">#ORD-2026-081</td>
+                                <td class="fw-semibold text-primary">#VF2026081</td>
                                 <td>18/10/2026</td>
                                 <td>Kem Gà Rán Đặc Biệt (x22)</td>
-                                <td class="text-end fw-semibold">5.100.000 ₫</td>
+                                <td class="text-end fw-semibold">5.100.000 VND</td>
                                 <td class="text-center">
-                                  <a href="./orders.html?id=ORD-2026-081"
-                                    class="btn btn-xs btn-outline-primary py-0 px-2">
-                                    <i class="bi bi-eye me-1"></i>Xem chi tiết
+                                  <a href="./orders.html" class="btn btn-xs btn-outline-primary py-0 px-2">
+                                    <i class="bi bi-eye"></i>
                                   </a>
                                 </td>
                               </tr>
                               <tr>
-                                <td class="fw-semibold text-primary">#ORD-2026-045</td>
+                                <td class="fw-semibold text-primary">#RF2026045</td>
                                 <td>10/09/2026</td>
                                 <td>Kem Matcha (x15), Kem Caramel (x10)</td>
-                                <td class="text-end fw-semibold">3.800.000 ₫</td>
+                                <td class="text-end fw-semibold">3.800.000 VND</td>
                                 <td class="text-center">
-                                  <a href="./orders.html?id=ORD-2026-045"
-                                    class="btn btn-xs btn-outline-primary py-0 px-2">
-                                    <i class="bi bi-eye me-1"></i>Xem chi tiết
+                                  <a href="./orders.html" class="btn btn-xs btn-outline-primary py-0 px-2">
+                                    <i class="bi bi-eye"></i>
                                   </a>
                                 </td>
                               </tr>
@@ -684,11 +681,11 @@
                         </div>
                       </td>
                       <td class="text-center">
-                        <span class="badge text-bg-primary fs-6">2 đơn</span>
+                        <span class="badge text-bg-primary fs-6">2 orders</span>
                       </td>
                       <td class="text-end">
-                        <div class="fs-5 fw-bold text-success">8.900.000 ₫</div>
-                        <small class="text-secondary">Chiếm 18.3% Top 5</small>
+                        <div class="fs-5 fw-bold text-success">8.900.000 VND</div>
+                        <small class="text-secondary"> 18.3% Top 5</small>
                       </td>
                     </tr>
 
@@ -703,8 +700,8 @@
                             class="rounded-circle me-3 border" style="width: 46px; height: 46px; object-fit: cover;" />
                           <div>
                             <div class="fw-bold text-body fs-6">Quang Trung</div>
-                            <div class="small text-secondary">Mã KH: #CUS-112 • 0933.445.566</div>
-                            <span class="badge text-bg-info mt-1">Hạng Vàng</span>
+                            <div class="small text-secondary">CID: #CUS-112 • 0933.445.566</div>
+                            <span class="badge text-bg-info mt-1">SR</span>
                           </div>
                         </div>
                       </td>
@@ -713,35 +710,33 @@
                           <table class="table table-sm table-hover mb-0">
                             <thead>
                               <tr>
-                                <th>Mã đơn</th>
-                                <th>Ngày đặt</th>
-                                <th>Sản phẩm tiêu biểu</th>
-                                <th class="text-end">Thành tiền</th>
-                                <th class="text-center">Chi tiết</th>
+                                <th>Order ID</th>
+                                <th>Order Date</th>
+                                <th>Items</th>
+                                <th class="text-end">Total</th>
+                                <th class="text-center">Details</th>
                               </tr>
                             </thead>
                             <tbody>
                               <tr>
-                                <td class="fw-semibold text-primary">#ORD-2026-077</td>
+                                <td class="fw-semibold text-primary">#FZ2026077</td>
                                 <td>12/10/2026</td>
                                 <td>Kem Chiên (x16), Kem Matcha (x10)</td>
-                                <td class="text-end fw-semibold">3.950.000 ₫</td>
+                                <td class="text-end fw-semibold">3.950.000 VND</td>
                                 <td class="text-center">
-                                  <a href="./orders.html?id=ORD-2026-077"
-                                    class="btn btn-xs btn-outline-primary py-0 px-2">
-                                    <i class="bi bi-eye me-1"></i>Xem chi tiết
+                                  <a href="./orders.html" class="btn btn-xs btn-outline-primary py-0 px-2">
+                                    <i class="bi bi-eye"></i>
                                   </a>
                                 </td>
                               </tr>
                               <tr>
-                                <td class="fw-semibold text-primary">#ORD-2026-031</td>
+                                <td class="fw-semibold text-primary">#TL2026031</td>
                                 <td>29/08/2026</td>
-                                <td>Combo Quà Tặng Kem Caramel (x12)</td>
-                                <td class="text-end fw-semibold">2.850.000 ₫</td>
+                                <td>Kem Chuối(x12)</td>
+                                <td class="text-end fw-semibold">2.850.000 VND</td>
                                 <td class="text-center">
-                                  <a href="./orders.html?id=ORD-2026-031"
-                                    class="btn btn-xs btn-outline-primary py-0 px-2">
-                                    <i class="bi bi-eye me-1"></i>Xem chi tiết
+                                  <a href="./orders.html" class="btn btn-xs btn-outline-primary py-0 px-2">
+                                    <i class="bi bi-eye"></i>
                                   </a>
                                 </td>
                               </tr>
@@ -750,11 +745,11 @@
                         </div>
                       </td>
                       <td class="text-center">
-                        <span class="badge text-bg-primary fs-6">2 đơn</span>
+                        <span class="badge text-bg-primary fs-6">2 orders</span>
                       </td>
                       <td class="text-end">
-                        <div class="fs-5 fw-bold text-success">6.800.000 ₫</div>
-                        <small class="text-secondary">Chiếm 13.9% Top 5</small>
+                        <div class="fs-5 fw-bold text-success">6.800.000 VND</div>
+                        <small class="text-secondary"> 13.9% Top 5</small>
                       </td>
                     </tr>
 
@@ -769,8 +764,8 @@
                             class="rounded-circle me-3 border" style="width: 46px; height: 46px; object-fit: cover;" />
                           <div>
                             <div class="fw-bold text-body fs-6">Nguyễn Huệ</div>
-                            <div class="small text-secondary">Mã KH: #CUS-119 • 0977.889.900</div>
-                            <span class="badge text-bg-secondary mt-1">Hạng Bạc</span>
+                            <div class="small text-secondary">CID: #CUS-119 • 0977.889.900</div>
+                            <span class="badge text-bg-secondary mt-1">R</span>
                           </div>
                         </div>
                       </td>
@@ -779,35 +774,33 @@
                           <table class="table table-sm table-hover mb-0">
                             <thead>
                               <tr>
-                                <th>Mã đơn</th>
-                                <th>Ngày đặt</th>
-                                <th>Sản phẩm tiêu biểu</th>
-                                <th class="text-end">Thành tiền</th>
-                                <th class="text-center">Chi tiết</th>
+                                <th>Order ID</th>
+                                <th>Order Date</th>
+                                <th>Items</th>
+                                <th class="text-end">Total</th>
+                                <th class="text-center">Details</th>
                               </tr>
                             </thead>
                             <tbody>
                               <tr>
-                                <td class="fw-semibold text-primary">#ORD-2026-070</td>
+                                <td class="fw-semibold text-primary">#OT2026070</td>
                                 <td>05/10/2026</td>
                                 <td>Kem Matcha (x12), Kem Gà Rán (x8)</td>
-                                <td class="text-end fw-semibold">3.200.000 ₫</td>
+                                <td class="text-end fw-semibold">3.200.000 VND</td>
                                 <td class="text-center">
-                                  <a href="./orders.html?id=ORD-2026-070"
-                                    class="btn btn-xs btn-outline-primary py-0 px-2">
-                                    <i class="bi bi-eye me-1"></i>Xem chi tiết
+                                  <a href="./orders.html" class="btn btn-xs btn-outline-primary py-0 px-2">
+                                    <i class="bi bi-eye"></i>
                                   </a>
                                 </td>
                               </tr>
                               <tr>
-                                <td class="fw-semibold text-primary">#ORD-2026-014</td>
+                                <td class="fw-semibold text-primary">#VF2026014</td>
                                 <td>09/08/2026</td>
                                 <td>Kem Chiên (x10), Kem Caramel (x6)</td>
-                                <td class="text-end fw-semibold">2.300.000 ₫</td>
+                                <td class="text-end fw-semibold">2.300.000 VND</td>
                                 <td class="text-center">
-                                  <a href="./orders.html?id=ORD-2026-014"
-                                    class="btn btn-xs btn-outline-primary py-0 px-2">
-                                    <i class="bi bi-eye me-1"></i>Xem chi tiết
+                                  <a href="./orders.html" class="btn btn-xs btn-outline-primary py-0 px-2">
+                                    <i class="bi bi-eye "></i>
                                   </a>
                                 </td>
                               </tr>
@@ -816,21 +809,21 @@
                         </div>
                       </td>
                       <td class="text-center">
-                        <span class="badge text-bg-primary fs-6">2 đơn</span>
+                        <span class="badge text-bg-primary fs-6">2 orders</span>
                       </td>
                       <td class="text-end">
-                        <div class="fs-5 fw-bold text-success">5.500.000 ₫</div>
-                        <small class="text-secondary">Chiếm 11.3% Top 5</small>
+                        <div class="fs-5 fw-bold text-success">5.500.000 VND</div>
+                        <small class="text-secondary"> 11.3% Top 5</small>
                       </td>
                     </tr>
                   </tbody>
                   <tfoot>
                     <tr class="customer-summary-row">
                       <td colspan="3" class="text-end fw-bold text-body fs-6">
-                        TỔNG CỘNG MUA HÀNG CỦA TOP 5 KHÁCH HÀNG TRONG KỲ:
+                        TOTAL SPENDING OF TOP 5 CUSTOMERS:
                       </td>
-                      <td class="text-center fw-bold text-body fs-6">12 đơn</td>
-                      <td class="text-end fw-bold text-success fs-5">48.750.000 ₫</td>
+                      <td class="text-center fw-bold text-body fs-6">12 orders</td>
+                      <td class="text-end fw-bold text-success fs-5">48.750.000 VND</td>
                     </tr>
                   </tfoot>
                 </table>
@@ -848,11 +841,10 @@
                   <i class="bi bi-currency-dollar"></i>
                 </span>
                 <div class="info-box-content">
-                  <span class="info-box-text text-secondary">Tổng doanh thu</span>
-                  <span class="info-box-number fs-5 fw-bold text-body">485.200.000 ₫</span>
+                  <span class="info-box-text text-secondary">Total Revenue</span>
+                  <span class="info-box-number fs-5 fw-bold text-body">485.200.000 VND</span>
                   <small class="text-success fw-semibold">
-                    <i class="bi bi-arrow-up-right"></i> +18.4% <span class="text-secondary fw-normal">so với tháng
-                      trước</span>
+                    <i class="bi bi-arrow-up-right"></i> +18.4% <span class="text-secondary fw-normal">vs. last month</span>
                   </small>
                 </div>
               </div>
@@ -864,11 +856,10 @@
                   <i class="bi bi-bag-check-fill"></i>
                 </span>
                 <div class="info-box-content">
-                  <span class="info-box-text text-secondary">Tổng đơn hàng</span>
+                  <span class="info-box-text text-secondary">Total Orders</span>
                   <span class="info-box-number fs-5 fw-bold text-body">1,842</span>
                   <small class="text-success fw-semibold">
-                    <i class="bi bi-arrow-up-right"></i> +12.1% <span class="text-secondary fw-normal">so với tháng
-                      trước</span>
+                    <i class="bi bi-arrow-up-right"></i> +12.1% <span class="text-secondary fw-normal">vs. last month</span>
                   </small>
                 </div>
               </div>
@@ -880,11 +871,10 @@
                   <i class="bi bi-person-plus-fill"></i>
                 </span>
                 <div class="info-box-content">
-                  <span class="info-box-text text-secondary">Khách hàng mới</span>
+                  <span class="info-box-text text-secondary">Total Customers</span>
                   <span class="info-box-number fs-5 fw-bold text-body">428</span>
                   <small class="text-success fw-semibold">
-                    <i class="bi bi-arrow-up-right"></i> +8.5% <span class="text-secondary fw-normal">so với tháng
-                      trước</span>
+                    <i class="bi bi-arrow-up-right"></i> +8.5% <span class="text-secondary fw-normal">vs. last month</span>
                   </small>
                 </div>
               </div>
@@ -896,11 +886,10 @@
                   <i class="bi bi-graph-up-arrow"></i>
                 </span>
                 <div class="info-box-content">
-                  <span class="info-box-text text-secondary">Tỷ lệ chuyển đổi</span>
+                  <span class="info-box-text text-secondary">Conversion Rate</span>
                   <span class="info-box-number fs-5 fw-bold text-body">4.65%</span>
                   <small class="text-danger fw-semibold">
-                    <i class="bi bi-arrow-down-right"></i> -0.4% <span class="text-secondary fw-normal">so với tháng
-                      trước</span>
+                    <i class="bi bi-arrow-down-right"></i> -0.4% <span class="text-secondary fw-normal">vs. last month</span>
                   </small>
                 </div>
               </div>
@@ -917,11 +906,11 @@
               <div class="card mb-4 shadow-sm">
                 <div class="card-header border-0 d-flex flex-wrap justify-content-between align-items-center gap-2">
                   <h3 class="card-title fw-bold mb-0 text-body">
-                    <i class="bi bi-bar-chart-steps me-2 text-primary"></i>Biểu đồ Doanh thu & Lợi nhuận (Năm 2026)
+                    <i class="bi bi-bar-chart-steps me-2 text-primary"></i>Revenue & Net Profit Overview
                   </h3>
                   <div class="d-flex align-items-center gap-3 fs-7 fw-semibold text-body">
-                    <span><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu (Triệu ₫)</span>
-                    <span><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận ròng (Triệu ₫)</span>
+                    <span><i class="bi bi-circle-fill text-primary me-1"></i>Revenue (Triệu VND)</span>
+                    <span><i class="bi bi-circle-fill text-success me-1"></i>Net Profit (Triệu VND)</span>
                   </div>
                 </div>
                 <div class="card-body pt-1">
@@ -955,121 +944,101 @@
                       <div class="chart-col-group" style="--bar-h: 42.2%;">
                         <div class="css-tooltip">
                           <div class="css-tooltip-title">Tháng 1 / 2026</div>
-                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>280 Triệu
-                              ₫</strong></div>
-                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>175 Triệu
-                              ₫</strong></div>
+                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>280 Triệu VND</strong></div>
+                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>175 Triệu VND</strong></div>
                         </div>
                         <div class="chart-bar" style="height: 42.2%;"></div>
-                        <span class="x-axis-label">Thg 1</span>
+                        <span class="x-axis-label">Jan</span>
                       </div>
 
                       <div class="chart-col-group" style="--bar-h: 48.9%;">
                         <div class="css-tooltip">
                           <div class="css-tooltip-title">Tháng 2 / 2026</div>
-                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>310 Triệu
-                              ₫</strong></div>
-                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>195 Triệu
-                              ₫</strong></div>
+                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>310 Triệu VND</strong></div>
+                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>195 Triệu VND</strong></div>
                         </div>
                         <div class="chart-bar" style="height: 48.9%;"></div>
-                        <span class="x-axis-label">Thg 2</span>
+                        <span class="x-axis-label">Feb</span>
                       </div>
 
                       <div class="chart-col-group" style="--bar-h: 45.6%;">
                         <div class="css-tooltip">
                           <div class="css-tooltip-title">Tháng 3 / 2026</div>
-                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>295 Triệu
-                              ₫</strong></div>
-                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>180 Triệu
-                              ₫</strong></div>
+                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>295 Triệu VND</strong></div>
+                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>180 Triệu VND</strong></div>
                         </div>
                         <div class="chart-bar" style="height: 45.6%;"></div>
-                        <span class="x-axis-label">Thg 3</span>
+                        <span class="x-axis-label">Mar</span>
                       </div>
 
                       <div class="chart-col-group" style="--bar-h: 55.6%;">
                         <div class="css-tooltip">
                           <div class="css-tooltip-title">Tháng 4 / 2026</div>
-                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>340 Triệu
-                              ₫</strong></div>
-                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>215 Triệu
-                              ₫</strong></div>
+                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>340 Triệu VND</strong></div>
+                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>215 Triệu VND</strong></div>
                         </div>
                         <div class="chart-bar" style="height: 55.6%;"></div>
-                        <span class="x-axis-label">Thg 4</span>
+                        <span class="x-axis-label">Apr</span>
                       </div>
 
                       <div class="chart-col-group" style="--bar-h: 60.0%;">
                         <div class="css-tooltip">
                           <div class="css-tooltip-title">Tháng 5 / 2026</div>
-                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>360 Triệu
-                              ₫</strong></div>
-                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>230 Triệu
-                              ₫</strong></div>
+                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>360 Triệu VND</strong></div>
+                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>230 Triệu VND</strong></div>
                         </div>
                         <div class="chart-bar" style="height: 60.0%;"></div>
-                        <span class="x-axis-label">Thg 5</span>
+                        <span class="x-axis-label">May</span>
                       </div>
 
                       <div class="chart-col-group" style="--bar-h: 53.3%;">
                         <div class="css-tooltip">
                           <div class="css-tooltip-title">Tháng 6 / 2026</div>
-                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>330 Triệu
-                              ₫</strong></div>
-                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>210 Triệu
-                              ₫</strong></div>
+                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>330 Triệu VND</strong></div>
+                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>210 Triệu VND</strong></div>
                         </div>
                         <div class="chart-bar" style="height: 53.3%;"></div>
-                        <span class="x-axis-label">Thg 6</span>
+                        <span class="x-axis-label">Jun</span>
                       </div>
 
                       <div class="chart-col-group" style="--bar-h: 50.0%;">
                         <div class="css-tooltip">
                           <div class="css-tooltip-title">Tháng 7 / 2026</div>
-                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>315 Triệu
-                              ₫</strong></div>
-                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>192 Triệu
-                              ₫</strong></div>
+                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>315 Triệu VND</strong></div>
+                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>192 Triệu VND</strong></div>
                         </div>
                         <div class="chart-bar" style="height: 50.0%;"></div>
-                        <span class="x-axis-label">Thg 7</span>
+                        <span class="x-axis-label">Jul</span>
                       </div>
 
                       <div class="chart-col-group" style="--bar-h: 64.9%;">
                         <div class="css-tooltip">
                           <div class="css-tooltip-title">Tháng 8 / 2026</div>
-                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>382 Triệu
-                              ₫</strong></div>
-                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>241 Triệu
-                              ₫</strong></div>
+                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>382 Triệu VND</strong></div>
+                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>241 Triệu VND</strong></div>
                         </div>
                         <div class="chart-bar" style="height: 64.9%;"></div>
-                        <span class="x-axis-label">Thg 8</span>
+                        <span class="x-axis-label">Aug</span>
                       </div>
 
                       <div class="chart-col-group" style="--bar-h: 71.1%;">
                         <div class="css-tooltip">
                           <div class="css-tooltip-title">Tháng 9 / 2026</div>
-                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>410 Triệu
-                              ₫</strong></div>
-                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>264 Triệu
-                              ₫</strong></div>
+                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>410 Triệu VND</strong></div>
+                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>264 Triệu VND</strong></div>
                         </div>
                         <div class="chart-bar" style="height: 71.1%;"></div>
-                        <span class="x-axis-label">Thg 9</span>
+                        <span class="x-axis-label">Sep</span>
                       </div>
 
                       <div class="chart-col-group" style="--bar-h: 87.8%;">
                         <div class="css-tooltip">
                           <div class="css-tooltip-title">Tháng 10 / 2026</div>
-                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>485 Triệu
-                              ₫</strong></div>
-                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>322 Triệu
-                              ₫</strong></div>
+                          <div><i class="bi bi-circle-fill text-primary me-1"></i>Doanh thu: <strong>485 Triệu VND</strong></div>
+                          <div><i class="bi bi-circle-fill text-success me-1"></i>Lợi nhuận: <strong>322 Triệu VND</strong></div>
                         </div>
                         <div class="chart-bar" style="height: 87.8%;"></div>
-                        <span class="x-axis-label">Thg 10</span>
+                        <span class="x-axis-label">Oct</span>
                       </div>
                     </div>
                   </div>
@@ -1079,22 +1048,22 @@
                     <div class="col-sm-3 col-6 border-end">
                       <span class="text-success fw-semibold"><i class="bi bi-caret-up-fill"></i> 17%</span>
                       <h5 class="fw-bold mb-0 text-body">485.2 Tr</h5>
-                      <span class="text-secondary fs-7 text-uppercase">Tổng doanh thu</span>
+                      <span class="text-secondary fs-7 text-uppercase">Total Revenue</span>
                     </div>
                     <div class="col-sm-3 col-6 border-end">
                       <span class="text-info fw-semibold"><i class="bi bi-caret-left-fill"></i> 0%</span>
                       <h5 class="fw-bold mb-0 text-body">162.8 Tr</h5>
-                      <span class="text-secondary fs-7 text-uppercase">Chi phí vận hành</span>
+                      <span class="text-secondary fs-7 text-uppercase">OPERATING COSTS</span>
                     </div>
                     <div class="col-sm-3 col-6 border-end">
                       <span class="text-success fw-semibold"><i class="bi bi-caret-up-fill"></i> 22%</span>
                       <h5 class="fw-bold mb-0 text-body">322.4 Tr</h5>
-                      <span class="text-secondary fs-7 text-uppercase">Lợi nhuận ròng</span>
+                      <span class="text-secondary fs-7 text-uppercase">Net Profit</span>
                     </div>
                     <div class="col-sm-3 col-6">
                       <span class="text-warning fw-semibold"><i class="bi bi-caret-up-fill"></i> 92%</span>
                       <h5 class="fw-bold mb-0 text-body">1,842</h5>
-                      <span class="text-secondary fs-7 text-uppercase">Đơn hoàn tất</span>
+                      <span class="text-secondary fs-7 text-uppercase">Completed Orders</span>
                     </div>
                   </div>
                 </div>
@@ -1106,32 +1075,32 @@
               <div class="card mb-4 shadow-sm">
                 <div class="card-header border-0">
                   <h3 class="card-title fw-bold text-body">
-                    <i class="bi bi-pie-chart-fill me-2 text-success"></i>Tỷ trọng theo danh mục
+                    <i class="bi bi-pie-chart-fill me-2 text-success"></i>Sales by Category
                   </h3>
                 </div>
                 <div class="card-body d-flex flex-column justify-content-center">
                   <div class="css-donut-chart">
                     <div class="css-donut-hole">
-                      <span class="text-secondary fs-7">Tổng cộng</span>
+                      <span class="text-secondary fs-7">Total</span>
                       <strong class="fs-5 text-body">485.2 Tr</strong>
                       <span class="badge text-bg-success mt-1">100%</span>
                     </div>
                   </div>
                   <ul class="list-group list-group-flush mt-3">
                     <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2 text-body">
-                      <span><i class="bi bi-circle-fill text-primary me-2"></i>Đồ uống & Caramel</span>
+                      <span><i class="bi bi-circle-fill text-primary me-2"></i>Kem Viên</span>
                       <span class="fw-bold">42% (203.7 Tr)</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2 text-body">
-                      <span><i class="bi bi-circle-fill text-success me-2"></i>Bánh ngọt & Đồ ăn nhẹ</span>
+                      <span><i class="bi bi-circle-fill text-success me-2"></i>Kem Trái Cây</span>
                       <span class="fw-bold">28% (135.8 Tr)</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2 text-body">
-                      <span><i class="bi bi-circle-fill text-warning me-2"></i>Combo Quà tặng</span>
+                      <span><i class="bi bi-circle-fill text-warning me-2"></i>Kem Hộp</span>
                       <span class="fw-bold">18% (87.3 Tr)</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2 text-body">
-                      <span><i class="bi bi-circle-fill text-danger me-2"></i>Phụ kiện & Khác</span>
+                      <span><i class="bi bi-circle-fill text-danger me-2"></i>Kem Que</span>
                       <span class="fw-bold">12% (58.4 Tr)</span>
                     </li>
                   </ul>
@@ -1149,11 +1118,11 @@
               <div class="card mb-4 shadow-sm">
                 <div class="card-header border-0 d-flex flex-wrap justify-content-between align-items-center gap-2">
                   <h3 class="card-title fw-bold mb-0 text-body">
-                    <i class="bi bi-globe2 me-2 text-info"></i>Hiệu suất kênh bán hàng & Lưu lượng
+                    <i class="bi bi-globe2 me-2 text-info"></i>Sales Channel Performance & Traffic
                   </h3>
                   <div class="d-flex gap-3 fs-7 fw-semibold text-body">
-                    <span><i class="bi bi-square-fill text-info me-1"></i>Lượt truy cập</span>
-                    <span><i class="bi bi-square-fill text-primary me-1"></i>Đơn hàng chuyển đổi</span>
+                    <span><i class="bi bi-square-fill text-info me-1"></i>Visits</span>
+                    <span><i class="bi bi-square-fill text-primary me-1"></i>Conversions</span>
                   </div>
                 </div>
                 <div class="card-body">
@@ -1245,19 +1214,19 @@
               <div class="card mb-4 shadow-sm">
                 <div class="card-header border-0 d-flex justify-content-between align-items-center">
                   <h3 class="card-title fw-bold text-body">
-                    <i class="bi bi-trophy-fill me-2 text-warning"></i>Top sản phẩm doanh thu cao nhất
+                    <i class="bi bi-trophy-fill me-2 text-warning"></i>Top Sold Products
                   </h3>
-                  <a href="products.html" class="btn btn-sm btn-outline-primary">Xem tất cả</a>
+                  <a href="products.html" class="btn btn-sm btn-outline-primary">View All</a>
                 </div>
                 <div class="card-body p-0">
                   <div class="table-responsive">
                     <table class="table table-hover align-middle mb-0">
                       <thead>
                         <tr>
-                          <th>Sản phẩm</th>
-                          <th class="text-center">Đã bán</th>
-                          <th>Tỷ trọng</th>
-                          <th class="text-end">Doanh thu</th>
+                          <th>Products</th>
+                          <th class="text-center">Sold</th>
+                          <th>Propotion</th>
+                          <th class="text-end">Revenue</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -1268,7 +1237,7 @@
                                 style="width: 42px; height: 42px; object-fit: cover" />
                               <div>
                                 <div class="fw-semibold text-body">Kem Matcha</div>
-                                <small class="text-secondary">Mã: #PRD-001</small>
+                                <small class="text-secondary">ID: #PRD-001</small>
                               </div>
                             </div>
                           </td>
@@ -1277,9 +1246,9 @@
                             <div class="progress progress-xs">
                               <div class="progress-bar bg-primary" style="width: 85%"></div>
                             </div>
-                            <small class="text-secondary">85% mục tiêu</small>
+                            <small class="text-secondary">85% goal</small>
                           </td>
-                          <td class="text-end fw-bold text-body">96.000.000 ₫</td>
+                          <td class="text-end fw-bold text-body">96.000.000 VND</td>
                         </tr>
                         <tr>
                           <td>
@@ -1288,7 +1257,7 @@
                                 style="width: 42px; height: 42px; object-fit: cover" />
                               <div>
                                 <div class="fw-semibold text-body">Kem Chiên</div>
-                                <small class="text-secondary">Mã: #PRD-002</small>
+                                <small class="text-secondary">ID: #PRD-002</small>
                               </div>
                             </div>
                           </td>
@@ -1297,9 +1266,9 @@
                             <div class="progress progress-xs">
                               <div class="progress-bar bg-success" style="width: 72%"></div>
                             </div>
-                            <small class="text-secondary">72% mục tiêu</small>
+                            <small class="text-secondary">72% goal</small>
                           </td>
-                          <td class="text-end fw-bold text-body">76.800.000 ₫</td>
+                          <td class="text-end fw-bold text-body">76.800.000 VND</td>
                         </tr>
                         <tr>
                           <td>
@@ -1308,7 +1277,7 @@
                                 style="width: 42px; height: 42px; object-fit: cover" />
                               <div>
                                 <div class="fw-semibold text-body">Kem Gà Rán</div>
-                                <small class="text-secondary">Mã: #PRD-003</small>
+                                <small class="text-secondary">ID: #PRD-003</small>
                               </div>
                             </div>
                           </td>
@@ -1317,9 +1286,9 @@
                             <div class="progress progress-xs">
                               <div class="progress-bar bg-warning" style="width: 60%"></div>
                             </div>
-                            <small class="text-secondary">60% mục tiêu</small>
+                            <small class="text-secondary">60% goal</small>
                           </td>
-                          <td class="text-end fw-bold text-body">62.400.000 ₫</td>
+                          <td class="text-end fw-bold text-body">62.400.000 VND</td>
                         </tr>
                         <tr>
                           <td>
@@ -1328,7 +1297,7 @@
                                 style="width: 42px; height: 42px; object-fit: cover" />
                               <div>
                                 <div class="fw-semibold text-body">Kem Caramel</div>
-                                <small class="text-secondary">Mã: #PRD-004</small>
+                                <small class="text-secondary">ID: #PRD-004</small>
                               </div>
                             </div>
                           </td>
@@ -1337,9 +1306,9 @@
                             <div class="progress progress-xs">
                               <div class="progress-bar bg-danger" style="width: 48%"></div>
                             </div>
-                            <small class="text-secondary">48% mục tiêu</small>
+                            <small class="text-secondary">48% goal</small>
                           </td>
-                          <td class="text-end fw-bold text-body">53.100.000 ₫</td>
+                          <td class="text-end fw-bold text-body">53.100.000 VND</td>
                         </tr>
                       </tbody>
                     </table>
@@ -1357,13 +1326,12 @@
 
     <!--begin::Footer-->
     <footer class="app-footer">
-      <div class="float-end d-none d-sm-inline">Hệ thống Quản trị & Thống kê</div>
+      <div class="float-end d-none d-sm-inline">Anything you want</div>
       <strong>
-        Copyright &copy; 2026&nbsp;
-        <a href="index.html" class="text-decoration-none">AdminLTE.io</a>.
+        Copyright &copy; 2014-2026&nbsp;
+        <a href="https://adminlte.io" class="text-decoration-none">AdminLTE.io</a>.
       </strong>
       All rights reserved.
-    </footer>
     <!--end::Footer-->
   </div>
   <!--end::App Wrapper-->
